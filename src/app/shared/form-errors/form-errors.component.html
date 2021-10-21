@@ -1,0 +1,25 @@
+<div class="error-container">
+  <div class="d-flex ion-align-items-center " *ngIf="pending">
+    <ion-spinner color="warning" style="zoom: 0.5"></ion-spinner>
+    <span style="color: var(--ion-color-warning)">validation en cours</span>
+  </div>
+  <div *ngIf="invalid && !errors?.verificationError && (dirty || (!onChangeOnly && touched))">
+    <ion-text *ngFor="let error of  getErrors()">
+      <div>
+                <span class="ion ion-align-self-center">
+                <app-ionicon-information-circle *ngIf="error!='verificationError'"></app-ionicon-information-circle>
+                </span>
+        <span>{{ (customMessage[error] || formService.errorMessages[error] || control.errors[error]?.message || control.errors[error]) }}</span>
+      </div>
+    </ion-text>
+  </div>
+  <div *ngIf="invalid && errors?.verificationError" (click)="control.updateValueAndValidity()"
+       style="cursor: pointer">
+    <ion-text>
+            <span class="ion ion-align-self-center" style="border: none !important;">
+                <app-ionicon-reload></app-ionicon-reload>
+            </span>
+      <span>{{formService.errorMessages.verificationError }}</span>
+    </ion-text>
+  </div>
+</div>

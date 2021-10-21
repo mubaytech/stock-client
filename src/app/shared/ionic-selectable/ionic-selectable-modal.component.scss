@@ -1,0 +1,27 @@
+::ng-deep .cdk-virtual-scroll-content-wrapper {
+  //@apply transition duration-200;
+}
+
+ion-footer ion-button {
+  height: 48px;
+}
+
+ion-content {
+  --background: var(--ion-background-color, #fff);
+}
+
+.ionic-selectable-item {
+  @apply relative;
+  &-is-disabled {
+    opacity: .7;
+  }
+
+  &:hover, &-is-selected {
+    background-color: rgba(var(--ion-color-warning-rgb), .1);
+  }
+
+  &-border {
+    @apply absolute top-0 left-0 w-full bg-light-base;
+    height: 2px;
+  }
+}

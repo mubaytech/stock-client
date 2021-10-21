@@ -1,0 +1,52 @@
+mutation createDepot(
+    $adresse_1:String!,
+    $contact_1:String!,
+    $contact_2:String!,
+    $email:String!,
+    $image:CreateFileModelBelongsTo!,
+    $nom:String!,
+    $region:String!,
+    $slug:String!,
+    $ville:String!,
+    $web:String!,
+){
+    createDepot(
+        input: {
+            adresse_1: $adresse_1,
+            contact_1: $contact_1,
+            contact_2: $contact_2,
+            email: $email,
+            image: $image,
+            nom: $nom,
+            region: $region,
+            slug: $slug,
+            transactions: {},
+            ville:$ville,
+            web: $web,
+        }
+    ){
+        adresse_1
+        contact_1
+        contact_2
+        created_at
+        email
+        id
+        image{
+            id
+            nom
+            url
+            thumbnail_path
+            thumbnail_url
+            url
+            created_at
+            updated_at
+        }
+
+        nom
+        region
+        slug
+        updated_at
+        ville
+        web
+    }
+}

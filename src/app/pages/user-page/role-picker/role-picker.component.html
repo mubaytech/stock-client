@@ -1,0 +1,27 @@
+<ionic-selectable
+    #_ionicSelectableComponent
+    [items]="(roles|async)"
+    [(ngModel)]="val"
+    (onChange)="modelChange($event)"
+    (onOpen)="onOpen($event)"
+    [virtualScrollApproxItemHeight]="56"
+    [itemTextField]="itemTextField"
+    [itemValueField]="itemValueField"
+    [canSearch]="true"
+>
+    <ng-template ionicSelectableItemTemplate let-item="item">
+        <div class=" flex flex-col ">
+            <span>{{item.nom}}</span>
+            <span class="text-sm font-light text-gray-500 dark:text-gray-300">{{item.description}}</span>
+        </div>
+    </ng-template>
+    <ng-template ionicSelectableValueTemplate let-value="value">
+        <div class="whitespace-nowrap">
+            <h3 class=" capitalize">{{value.nom}}</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-200">{{value.description}}</p>
+        </div>
+    </ng-template>
+</ionic-selectable>
+
+
+

@@ -1,0 +1,31 @@
+
+<ng-container *ngIf="menuComponent.header">
+    <ng-template
+        *ngTemplateOutlet="menuComponent.header;context{ items: menuComponent.items }"
+    >
+    </ng-template>
+</ng-container>
+<ion-header *ngIf="!menuComponent.header">
+    <ion-toolbar>
+        <ion-title>{{menuComponent.title}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ng-container *ngIf="menuComponent.content">
+    <ng-template
+        *ngTemplateOutlet="menuComponent.content;context{ items: menuComponent.items }"
+    >
+    </ng-template>
+</ng-container>
+<ion-content *ngIf="!menuComponent.content">
+    <ion-list>
+        <ion-item *ngFor="let item of menuComponent.items" button lines="full" (click)="dismiss()">
+            {{item[menuComponent.key]}}
+        </ion-item>
+    </ion-list>
+</ion-content>
+<ng-container *ngIf="menuComponent.footer">
+    <ng-template
+        *ngTemplateOutlet="menuComponent.footer;context{ items: menuComponent.items }"
+    >
+    </ng-template>
+</ng-container>

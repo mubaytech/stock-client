@@ -1,0 +1,29 @@
+
+:host {
+  display: block;
+  --prefix-color: rgba(var(--ion-color-dark-rgb), .5);
+  --value-color: rgba(var(--ion-color-success-rgb), .3);
+  --radix-color: var(--ion-color-danger-tint);
+  --text-shadow: .7px .7px .5px #333;
+  @apply text-sm;
+  .money-negative {
+    @apply text-lg ;
+    color: var(--radix-color);
+    text-shadow: var(--text-shadow);
+  }
+
+  .money-prefix {
+    color: var(--prefix-color);
+    text-shadow: var(--text-shadow);
+  }
+
+  .money-value {
+    color: var(--value-color);
+    text-shadow: var(--text-shadow);
+  }
+
+  .money-radix {
+    color: var(--radix-color);
+    text-shadow: var(--text-shadow);
+  }
+}

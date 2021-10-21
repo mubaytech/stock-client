@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-select
+      [value]="desiredDevice?.deviceId"
+      interface="alert"
+      placeholder="Appareil"
+      slot="start"
+      (ionChange)="onDeviceChange($event)"
+    >
+      <ion-select-option [value]="$item$.deviceId" *ngFor="let $item$ of devices">{{$item$.label}}</ion-select-option>
+    </ion-select>
+    <ion-title>
+      Code scanneur
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <tui-loader
+    [showLoader]="!desiredDevice"
+    class="w-full h-full"
+    [overlay]="true"
+  >
+    <zxing-scanner
+      class="w-full h-full"
+      [enable]="scannerEnabled"
+      [(device)]="desiredDevice"
+      [torch]="torch"
+      [formats]="formats"
+      (torchCompatible)="onTorchCompatible($event)"
+      (camerasFound)="camerasFoundHandler($event)"
+      (camerasNotFound)="camerasNotFoundHandler($event)"
+      (scanSuccess)="scanSuccessHandler($event)"
+      (scanError)="scanErrorHandler($event)"
+      (scanFailure)="scanFailureHandler($event)"
+      (scanComplete)="scanCompleteHandler($event)"
+    ></zxing-scanner>
+  </tui-loader>
+</ion-content>

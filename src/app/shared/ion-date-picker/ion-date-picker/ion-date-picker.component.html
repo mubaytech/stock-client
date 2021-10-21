@@ -1,0 +1,47 @@
+<div class="flex w-full ">
+  <ion-input class="flex-grow" [appMask]="null" [maskOptions]="maskOptions"
+             #ionInput
+             [(ngModel)]="ionInputValue"
+             [(maskInstance)]="maskInstance"
+             (focusin)="hasFocus=true"
+             (focusout)="hasFocus=false"
+             (ionInput)="onInput(ionInput.value)"
+             [placeholder]="placeholder"
+
+             [disabled]="isDisabled"
+             [readonly]="isReadonly"
+
+
+  ></ion-input>
+  <div *ngIf="clearInput" class="float-right z-10">
+    <ion-button
+      *ngIf="value"
+      color="dark" slot="end" fill="clear" class="ml-1"
+      (click)="value=null;ionInput.value=null">
+      <app-ionicon-close-circle class="text-lg"></app-ionicon-close-circle>
+    </ion-button>
+  </div>
+
+  <ion-button class="flex-none ion-no-padding " style="font-size: 22px;width: 30px;height: 30px;--border-radius:50%;"
+              (click)="ionDatetime.open()" fill="clear">
+    <app-ionicon-calendar></app-ionicon-calendar>
+  </ion-button>
+  <span style="display: none">
+    <ion-datetime
+      #ionDatetime
+      [value]="val"
+      (ionChange)="onBlur($event)"
+      cancelText="fermer"
+      dayNames="dimanche, lundi, mardi, mercredi, jeudi, vendredi, samedi"
+      dayShortNames="dim, lun, mar, mer, jeu, ven, sam"
+      [pickerFormat]="pickerFormat"
+      doneText="ok"
+      monthNames="janvier, fevrier, mars, avril, mais, juin, juillet, aout, septembre, octobre, novembre , décembre"
+      monthShortNames="jan, fev, mar, avr, mai, juin, juill, aout, sep, oct, nov, dec"
+      [pickerOptions]="pickerOptions"
+      [disabled]="isDisabled"
+      [readonly]="isReadonly"
+    ></ion-datetime>
+  </span>
+
+</div>

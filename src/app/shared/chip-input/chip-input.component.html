@@ -1,0 +1,35 @@
+ <app-custom-ion-input
+   [(ngModel)]="val"
+   [clearInput]="clearInput"
+
+ >
+   <app-custom-ion-input-value>
+     <div class="flex flex-wrap items-baseline">
+
+       <ng-container *ngIf="!chipInputItemComponent">
+         <ion-chip class="h-auto" *ngFor="let e of items; let i = index;">
+           <p>{{e}}</p>
+           <app-ionicon-close-outline class="cursor-pointer"  (click)="removeItem(i)"></app-ionicon-close-outline>
+         </ion-chip>
+       </ng-container>
+       <ng-container *ngIf="chipInputItemComponent">
+         <ng-content select="app-chip-input-item"></ng-content>
+       </ng-container>
+       <ng-container *ngIf="chipInputFieldComponent">
+         <ng-content select="app-chip-input-field"></ng-content>
+       </ng-container>
+       <ion-input *ngIf="!chipInputFieldComponent"  [debounce]="0" type="text"
+                  style="min-width: 50px"
+                  formControlName="item"
+                  (keyup.enter)="addItem(item)"
+                  (keyup.tab)="addItem(item)"
+                  (keydown.backspace)="removeLast()"
+                  (focusout)="item=null"></ion-input>
+     </div>
+   </app-custom-ion-input-value>
+   <app-custom-ion-input-icon class="text-2xl">
+<!--     <app-ionicon-add></app-ionicon-add>-->
+     <app-ionicon-trash-outline *ngIf="items.length" class="cursor-pointer" (click)="removeAll()"></app-ionicon-trash-outline>
+   </app-custom-ion-input-icon>
+
+ </app-custom-ion-input>

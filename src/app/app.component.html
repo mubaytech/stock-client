@@ -1,0 +1,275 @@
+<tui-root class="app-ion-page">
+  <tui-theme-night *ngIf="darkMode"></tui-theme-night>
+  <ion-app [tuiMode]="darkMode?'onDark':null">
+    <ion-header class="taskbar-header" *ngIf="!coreService.isMobile">
+      <ion-toolbar
+        class="taskbar ion-no-padding"
+        style="--padding-top: 0px;--padding-bottom: 0px;"
+      >
+        <ion-buttons slot="end">
+          <ion-button size="small" fill="clear">
+            <app-ionicon-remove-outline></app-ionicon-remove-outline>
+          </ion-button>
+          <ion-button size="small" fill="clear">
+            <app-ionicon-copy-outline></app-ionicon-copy-outline>
+          </ion-button>
+          <ion-button size="small" fill="clear">
+            <app-ionicon-close-outline></app-ionicon-close-outline>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <div class="ion-content">
+      <ion-split-pane contentId="main">
+        <!--  the side menu  -->
+        <ion-menu
+          [disabled]="!(authGuardsService.authService.user | async)"
+          contentId="main"
+          [type]="menuTypePush ? 'push' : 'overlay'"
+          [menuId]="'main-left'"
+          (ionDidOpen)="coreService.triggerResize()"
+        >
+          <ion-header>
+            <ion-toolbar>
+              <div class="flex flex-wrap items-end gap-2">
+                <ion-button
+                  size="small"
+                  class="text-2xl"
+                  fill="clear"
+                  color="dark"
+                  style="height: 40px;width: 40px"
+                  [routerLink]="routeService.toHome"
+                >
+                  <app-ionicon-home-outline></app-ionicon-home-outline>
+                </ion-button>
+                <app-current-user style=""></app-current-user>
+                <app-setting-item
+                  style="display: block !important;"
+                  *ngIf="ionRouterOutlet"
+                  [setting]="anneeScolaire | async"
+                  [placeholder]="null"
+                ></app-setting-item>
+                <ion-button
+                  size="small"
+                  class="text-2xl"
+                  fill="clear"
+                  color="dark"
+                  style="height: 40px;width: 40px"
+                  appQrScanner
+                >
+                  <app-ionicon-scan-outline></app-ionicon-scan-outline>
+                </ion-button>
+              </div>
+            </ion-toolbar>
+            <ion-toolbar>
+              <div class="flex relative items-center justify-center">
+                <app-etudiant-search></app-etudiant-search>
+              </div>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="shadow-inner" [scrollY]="false" [scrollX]="false">
+            <tui-scrollbar
+              waIntersectionRoot
+              class="h-full w-full"
+
+            >
+              <ion-list>
+
+
+                <ng-container *hasLevel="authGuardsService.LEVELS.Scolarite">
+                  <ion-list-header>
+                    <ion-label>
+                      <div class="flex items-center">
+                        <div class="text-lg">
+                          <app-ionicon-school-outline></app-ionicon-school-outline>
+                        </div>
+                        <div>Scolarite</div>
+                      </div>
+                    </ion-label>
+                  </ion-list-header>
+                  <ion-item
+                    [detail]="true"
+                    lines="none"
+                    [routerLink]="[routeService.inscriptionRoutes.codification()]"
+                    [replaceUrl]="true"
+                  >
+                    <ion-label>
+                      Codification
+                    </ion-label>
+                  </ion-item>
+                  <ion-item
+                    [detail]="true"
+                    lines="none"
+                    [routerLink]="[routeService.inscriptionRoutes.preinscription()]"
+                    [replaceUrl]="true"
+                  >
+                    <ion-label>Pre inscription</ion-label>
+                  </ion-item>
+                </ng-container>
+
+
+                <ng-container *hasLevel="authGuardsService.LEVELS.Note">
+                  <ion-list-header>
+                    <ion-label>
+                      <div class="flex items-center">
+                        <div class="text-lg">
+                          <app-ionicon-bookmarks-outline></app-ionicon-bookmarks-outline>
+                        </div>
+                        <div>Notes</div>
+                      </div>
+                    </ion-label>
+                  </ion-list-header>
+                  <ion-item
+                    [detail]="true"
+                    lines="none"
+                    [routerLink]="[routeService.routesnote.home()]"
+                    [replaceUrl]="true"
+                  >
+                    <ion-label>Saisie</ion-label>
+                  </ion-item>
+                </ng-container>
+
+
+                <ng-container *hasLevel="authGuardsService.LEVELS.Renseignement">
+                  <ion-list-header>
+                    <ion-label>
+                      <div class="flex items-center">
+                        <div class="text-lg">
+                          <app-ionicon-print-outline></app-ionicon-print-outline>
+                        </div>
+                        <div>Impression</div>
+                      </div>
+                    </ion-label>
+                  </ion-list-header>
+                  <ion-item
+                    [detail]="true"
+                    lines="none"
+                    [routerLink]="[routeService.routesimpression.bulletinPreview()]"
+                    [replaceUrl]="true"
+                  >
+                    <ion-label>
+                      Bulletins
+                    </ion-label>
+                  </ion-item>
+                  <ion-item
+                    [detail]="true"
+                    lines="none"
+                    [routerLink]="[routeService.routesimpression.situationScolaritePreview()]"
+                    [replaceUrl]="true"
+                  >
+                    <ion-label>
+                      Situation scolarites
+                    </ion-label>
+                  </ion-item>
+                  <ion-item
+                    [detail]="true"
+                    lines="none"
+                    [routerLink]="[routeService.routesimpression.certificat_inscriptionPreview()]"
+                    [replaceUrl]="true"
+                  >
+                    <ion-label>
+                      Certifica d'inscription
+                    </ion-label>
+                  </ion-item>
+                  <ion-item
+                    [detail]="true"
+                    lines="none"
+                    [routerLink]="[routeService.routesimpression.emploisDuTempPreview()]"
+                    [replaceUrl]="true"
+                  >
+                    <ion-label>
+                      Emplois de temp
+                    </ion-label>
+                  </ion-item>
+                </ng-container>
+
+
+                <ng-container *hasLevel="authGuardsService.LEVELS.Renseignement">
+                  <ion-list-header>
+                    <ion-label>
+                      <div class="flex items-center">
+                        <div class="text-lg">
+                          <app-ionicon-calendar-outline></app-ionicon-calendar-outline>
+                        </div>
+                        <div>Programme</div>
+                      </div>
+                    </ion-label>
+                  </ion-list-header>
+                  <ion-item
+                    [detail]="true"
+                    lines="none"
+                    [routerLink]="[routeService.routesprogramme.matieres()]"
+                    [replaceUrl]="true"
+                  >
+                    <ion-label>
+                      Matieres
+                    </ion-label>
+                  </ion-item>
+
+                </ng-container>
+
+
+                <ng-container *hasLevel="authGuardsService.LEVELS.Renseignement">
+                  <ion-list-header>
+                    <ion-label>
+                      <div class="flex items-center">
+                        <div class="text-lg">
+                          <app-ionicon-ellipsis-vertical-circle-outline></app-ionicon-ellipsis-vertical-circle-outline>
+                        </div>
+                        <div>Autres</div>
+                      </div>
+                    </ion-label>
+                  </ion-list-header>
+                  <ion-item
+                    [detail]="true"
+                    lines="none"
+                    [routerLink]="[routeService.routesparamettre.home()]"
+                    [replaceUrl]="true"
+                  >
+                    <ion-label>Paramettres</ion-label>
+                  </ion-item>
+                </ng-container>
+              </ion-list>
+            </tui-scrollbar>
+          </ion-content>
+          <ion-footer>
+            <ion-toolbar>
+              <div class="text-center font-extrabold text-warning-base">
+                <h2>ITECOM</h2>
+                <p>Institut Technique de Commerce</p>
+              </div>
+            </ion-toolbar>
+          </ion-footer>
+        </ion-menu>
+
+        <!-- the main content -->
+        <ion-router-outlet
+          id="main"
+          [swipeGesture]="true"
+          [animated]="true"
+        ></ion-router-outlet>
+      </ion-split-pane>
+    </div>
+
+
+  </ion-app>
+
+  <!-- content of your app -->
+
+  <!--
+   If you need, you can add something between Taiga portal layers:
+  -->
+  <ng-container ngProjectAs="tuiOverDialogs">
+    <!-- Content over dialogs-->
+  </ng-container>
+  <ng-container ngProjectAs="tuiOverNotifications">
+    <!-- Content over notifications -->
+  </ng-container>
+  <ng-container ngProjectAs="tuiOverPortals">
+    <!-- Content over dropdowns -->
+  </ng-container>
+  <ng-container ngProjectAs="tuiOverHints">
+    <!-- Content over hints -->
+  </ng-container>
+
+</tui-root>

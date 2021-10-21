@@ -1,0 +1,26 @@
+<ion-content [scrollY]="true" [scrollX]="false" class="cursor-pointer">
+  <ion-card class="ion-no-margin ion-no-padding  p-6 " style="background-color: inherit">
+    <ion-card-title>{{title}}</ion-card-title>
+    <p >{{description}}</p>
+    <p *ngIf="confirmerAvant" class="flex pt-4  items-center">
+      <ion-checkbox  [(ngModel)]="confirmee"></ion-checkbox>
+      <span class="pl-2">Confirmer pour continuer!</span>
+    </p>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-row class="ion-justify-content-end">
+      <ion-button fill="clear" color="warning" (click)="continue()"
+                  [disabled]="(!confirmee)||(timeout>0)">
+        <div style="width: 100%;" slot="start">
+          {{continueText}}
+          <ion-progress-bar type="indeterminate"
+                            color="warning"
+                            *ngIf="timeout > 0"></ion-progress-bar>
+        </div>
+      </ion-button>
+      <ion-button fill="clear" (click)="cancel()">{{cancelText}}</ion-button>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

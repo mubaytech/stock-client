@@ -1,0 +1,108 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>{{pickerInputComponent.customIonInputComponent.label}}</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="pickerInputComponent._modal.dismiss()">
+                <app-ionicon-close class="text-colored text-3xl"></app-ionicon-close>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <!--<div class=" w-full" *ngIf="!treeOptions">
+        <ion-skeleton-text [animated]="true" class="w-full"></ion-skeleton-text>
+        <ion-skeleton-text [animated]="true" class="w-full ml-4"></ion-skeleton-text>
+        <ion-skeleton-text [animated]="true" class="w-full ml-4"></ion-skeleton-text>
+        <ion-skeleton-text [animated]="true" class="w-full ml-4"></ion-skeleton-text>
+    </div>-->
+    <tree-root *ngIf="treeOptions"
+               #tree
+               (initialized)="onInit(tree)"
+               (select)="setSelected()"
+               (deselect)="setSelected()"
+               [(state)]="pickerInputComponent.state" id="tree2"
+               [focused]="true"
+               [nodes]="pickerInputComponent.nodes"
+               [options]="treeOptions"
+
+    >
+        <ng-template #treeNodeFullTemplate
+                     let-node
+                     let-index="index"
+                     let-templates="templates"
+
+        >
+            <div
+                *ngVar="(node|node) as node"
+                [class]="node.getClass()+(!node.isRoot?' pl-12':'')"
+                [class.tree-node]="true"
+                [class.tree-node-expanded]="node.isExpanded && node.hasChildren"
+                [class.tree-node-collapsed]="node.isCollapsed && node.hasChildren"
+                [class.tree-node-leaf]="node.isLeaf"
+                [class.tree-node-active]="node.isActive"
+                [class.tree-node-focused]="node.isFocused"
+            >
+
+                <tree-node-drop-slot
+                    *ngIf="index === 0"
+                    [dropIndex]="node.index"
+                    [node]="node.parent">
+                </tree-node-drop-slot>
+
+                <div class="flex items-center  py-2 font-normal  hover:bg-light-base cursor-default relative">
+                    <div
+                        class="inline-block inline-block cursor-pointer node-expender  text-lg  ion-activatable ripple-parent ion-color-primary text-colored"
+                        *ngIf="node.hasChildren"
+                        (click)="node.toggleExpanded()">
+                        <!--                        ;(node.children.length && node.loadNodeChildren())-->
+                        <app-ionicon-chevron-forward-outline
+                            class="text-colored"
+                            *ngIf="node.isCollapsed"></app-ionicon-chevron-forward-outline>
+                        <app-ionicon-chevron-down-outline
+                            class="text-colored"
+                            *ngIf="node.isExpanded"></app-ionicon-chevron-down-outline>
+                        <ion-ripple-effect></ion-ripple-effect>
+                    </div>
+                    <div
+                        class="inline-block cursor-pointer node-checkbox text-2xl ion-activatable ripple-parent ion-color-primary text-colored"
+                        (click)="node.toggleSelected()"
+                    >
+                        <app-ionicon-remove-circle
+                            class="text-colored"
+                            *ngIf="node.isPartiallySelected"></app-ionicon-remove-circle>
+                        <app-ionicon-checkbox
+                            class="text-colored"
+                            *ngIf="!node.isPartiallySelected && node.isSelected"></app-ionicon-checkbox>
+                        <app-ionicon-square-outline
+                            class="text-colored"
+                            *ngIf="!node.isSelected"></app-ionicon-square-outline>
+                        <ion-ripple-effect></ion-ripple-effect>
+                    </div>
+                    <div class="flex-1 ion-text-lg-nowrap"
+                         [class.app-tree-node-content-wrapper-active]="node.isActive"
+                    >
+                        <!--                        [class.node-content-wrapper-focused]="node.isFocused"-->
+                        <span class="ion-text-capitalize" [class.title]="true">{{ (node.data.nom) }}</span>
+                    </div>
+                    <ion-progress-bar type="indeterminate" class="absolute left-0 bottom-0 w-full"
+                                      *ngIf="loadingNodes.get(node.data.id)"></ion-progress-bar>
+                </div>
+
+                <tree-node-children [node]="node" [templates]="templates">
+                </tree-node-children>
+                <tree-node-drop-slot [dropIndex]="node.index + 1" [node]="node.parent">
+                </tree-node-drop-slot>
+            </div>
+        </ng-template>
+        <ng-template #loadingTemplate let-node>
+        </ng-template>
+    </tree-root>
+
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-button fill="clear" size="full" (click)="pickerInputComponent._modal.dismiss()">
+            Ok
+        </ion-button>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,1945 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+interface HasAdresse1 {
+    adresse_1: String!
+}
+
+interface HasAdresse2 {
+    adresse_2: String!
+}
+
+interface HasContact1 {
+    contact_1: String!
+}
+
+interface HasContact2 {
+    contact_2: String!
+}
+
+interface HasCreatedAt {
+    created_at: DateTimeTz!
+}
+
+interface HasDeletedAt {
+    deleted_at: DateTimeTz
+}
+
+interface HasDescription {
+    description: String!
+}
+
+interface HasEmail {
+    email: String!
+}
+
+interface HasImage {
+    image: FileModel!
+}
+
+interface HasNode {
+    id: ID!
+}
+
+interface HasNom {
+    nom: String!
+}
+
+interface HasSlug {
+    slug: String!
+}
+
+interface HasUpdatedAt {
+    updated_at: DateTimeTz!
+}
+
+interface MayBeHasAdresse1 {
+    adresse_1: String
+}
+
+interface MayBeHasAdresse2 {
+    adresse_2: String
+}
+
+interface MayBeHasContact1 {
+    contact_1: String
+}
+
+interface MayBeHasContact2 {
+    contact_2: String
+}
+
+interface MayBeHasCreatedAt {
+    created_at: DateTimeTz
+}
+
+interface MayBeHasDeletedAt {
+    deleted_at: DateTimeTz
+}
+
+interface MayBeHasDescription {
+    description: String
+}
+
+interface MayBeHasEmail {
+    email: String
+}
+
+interface MayBeHasImage {
+    image: FileModel
+}
+
+interface MayBeHasNode {
+    id: ID
+}
+
+interface MayBeHasNom {
+    nom: String
+}
+
+interface MayBeHasSlug {
+    slug: String
+}
+
+interface MayBeHasUpdatedAt {
+    updated_at: DateTimeTz
+}
+
+type AuthPayload {
+    access_token: String
+    expires_in: Int
+    refresh_token: String
+    token_type: String
+    user: User
+}
+
+type Categorie implements HasCreatedAt & HasDescription & HasNode & HasNom & HasSlug & HasUpdatedAt & MayBeHasImage {
+    ancestors: [Categorie!]!
+    children: [Categorie!]!
+    created_at: DateTimeTz!
+    description: String!
+    hasChildren: Int!
+    id: ID!
+    image: FileModel
+    nom: String!
+    pivot: CategorieUnitesDeMesure!
+    slug: String!
+    unitesDeMesures: [UnitesDeMesure!]!
+    updated_at: DateTimeTz!
+}
+
+"A paginated list of Categorie items."
+type CategoriePaginator {
+    "A list of Categorie items."
+    data: [Categorie!]!
+    "Pagination information about the list of items."
+    paginatorInfo: PaginatorInfo!
+}
+
+type CategorieUnitesDeMesure implements HasCreatedAt & HasNode & HasUpdatedAt {
+    cathegorie: Categorie!
+    created_at: DateTimeTz!
+    id: ID!
+    uniteDeMesure: UnitesDeMesure!
+    updated_at: DateTimeTz!
+}
+
+"A paginated list of CategorieUnitesDeMesure items."
+type CategorieUnitesDeMesurePaginator {
+    "A list of CategorieUnitesDeMesure items."
+    data: [CategorieUnitesDeMesure!]!
+    "Pagination information about the list of items."
+    paginatorInfo: PaginatorInfo!
+}
+
+type Client implements HasAdresse1 & HasContact1 & HasContact2 & HasCreatedAt & HasEmail & HasImage & HasNode & HasNom & HasUpdatedAt {
+    adresse_1: String!
+    commandes: [Commande!]!
+    contact_1: String!
+    contact_2: String!
+    created_at: DateTimeTz!
+    email: String!
+    id: ID!
+    image: FileModel!
+    nom: String!
+    updated_at: DateTimeTz!
+}
+
+"A paginated list of Client items."
+type ClientPaginator {
+    "A list of Client items."
+    data: [Client!]!
+    "Pagination information about the list of items."
+    paginatorInfo: PaginatorInfo!
+}
+
+type Commande implements HasCreatedAt & HasDeletedAt & HasDescription & HasNode & HasUpdatedAt {
+    age: DateTimeTz!
+    client: Client!
+    created_at: DateTimeTz!
+    date: DateTimeTz!
+    date_expiration: DateTimeTz!
+    deleted_at: DateTimeTz
+    depot: Depot!
+    description: String!
+    detail: CommandeStock!
+    etat: EtatCommande!
+    id: ID!
+    stock: Stock!
+    transactions: [Transaction!]!
+    type: TypeCommande!
+    updated_at: DateTimeTz!
+    user: User!
+}
+
+"A paginated list of Commande items."
+type CommandePaginator {
+    "A list of Commande items."
+    data: [Commande!]!
+    "Pagination information about the list of items."
+    paginatorInfo: PaginatorInfo!
+}
+
+type CommandeStock implements HasCreatedAt & HasDeletedAt & HasNode & HasUpdatedAt {
+    created_at: DateTimeTz!
+    deleted_at: DateTimeTz
+    id: ID!
+    prix_achat_unitaire: Float!
+    prix_de_vente_unitaire: Float!
+    quantite: Float!
+    remise: Float!
+    remise_description: String!
+    taxe: Float!
+    taxe_description: String!
+    updated_at: DateTimeTz!
+}
+
+type Depot implements HasAdresse1 & HasContact1 & HasContact2 & HasCreatedAt & HasEmail & HasImage & HasNode & HasNom & HasSlug & HasUpdatedAt {
+    adresse_1: String!
+    contact_1: String!
+    contact_2: String!
+    created_at: DateTimeTz!
+    email: String!
+    id: ID!
+    image: FileModel!
+    nom: String!
+    region: String!
+    slug: String!
+    transactions: [Transaction!]!
+    updated_at: DateTimeTz!
+    ville: String!
+    web: String!
+}
+
+type Facture implements HasCreatedAt & HasDeletedAt & HasNode & HasUpdatedAt {
+    created_at: DateTimeTz!
+    date: DateTimeTz!
+    deleted_at: DateTimeTz
+    id: ID!
+    montant: Float!
+    transaction: Transaction!
+    updated_at: DateTimeTz!
+}
+
+"A paginated list of Facture items."
+type FacturePaginator {
+    "A list of Facture items."
+    data: [Facture!]!
+    "Pagination information about the list of items."
+    paginatorInfo: PaginatorInfo!
+}
+
+type FileModel implements HasCreatedAt & HasNode & HasUpdatedAt {
+    created_at: DateTimeTz!
+    exist: Boolean!
+    id: ID!
+    nom: String
+    path: String
+    thumbnail_path: String
+    thumbnail_url: String
+    type: String
+    updated_at: DateTimeTz!
+    url: String
+}
+
+"A paginated list of FileModel items."
+type FileModelPaginator {
+    "A list of FileModel items."
+    data: [FileModel!]!
+    "Pagination information about the list of items."
+    paginatorInfo: PaginatorInfo!
+}
+
+type ForgotPasswordResponse {
+    message: String
+    status: String!
+}
+
+type LogoutResponse {
+    message: String
+    status: String!
+}
+
+type Mutation {
+    DepotUpsert(input: UpsertDepotInput): Depot!
+    createCategorie(input: CreateCategorieInput): Categorie!
+    createCategorieUnitesDeMesure(input: CreateCategorieUnitesDeMesureInput): CategorieUnitesDeMesure!
+    createClient(input: CreateClientInput): Client!
+    createCommande(input: CreateCommandeInput): Commande!
+    createDepot(input: CreateDepotInput): Depot!
+    createFacture(input: CreateFactureInput): Facture!
+    createFileModel(input: CreateFileModelInput): FileModel!
+    createNationalite(input: CreateNationaliteInput): Nationalite!
+    createPermission(input: CreatePermissionInput): Permission!
+    createPersonne(input: CreatePersonneInput): Personne!
+    createRole(input: CreateRoleInput): Role!
+    createSetting(input: CreateSettingInput): Setting!
+    createStock(input: CreateStockInput): Stock!
+    createTransaction(input: CreateTransactionInput): Transaction!
+    createUnitesDeMesure(input: CreateUnitesDeMesureInput): UnitesDeMesure!
+    createUser(input: CreateUserInput): User!
+    forgotPassword(input: ForgotPasswordInput!): ForgotPasswordResponse!
+    login(input: LoginInput): AuthPayload!
+    logout: LogoutResponse!
+    refreshToken(input: RefreshTokenInput): RefreshTokenPayload!
+    register(input: RegisterInput): RegisterResponse!
+    socialLogin(input: SocialLoginInput!): AuthPayload!
+    updateCategorie(input: UpdateCategorieInput): Categorie!
+    updateCategorieUnitesDeMesure(input: UpdateCategorieUnitesDeMesureInput): CategorieUnitesDeMesure!
+    updateClient(input: UpdateClientInput): Client!
+    updateCommande(input: UpdateCommandeInput): Commande!
+    updateDepot(input: UpdateDepotInput): Depot!
+    updateFacture(input: UpdateFactureInput): Facture!
+    updateFileModel(input: UpdateFileModelInput): FileModel!
+    updateForgottenPassword(input: NewPasswordWithCodeInput): ForgotPasswordResponse!
+    updateNationalite(input: UpdateNationaliteInput): Nationalite!
+    updatePassword(input: UpdatePassword!): UpdatePasswordResponse!
+    updatePermission(input: UpdatePermissionInput): Permission!
+    updatePersonne(input: UpdatePersonneInput): Personne!
+    updateRole(input: UpdateRoleInput): Role!
+    updateSetting(input: UpdateSettingInput): Setting!
+    updateStock(input: UpdateStockInput): Stock!
+    updateTransaction(input: UpdateTransactionInput): Transaction!
+    updateUnitesDeMesure(input: UpdateUnitesDeMesureInput): UnitesDeMesure!
+    updateUser(input: UpdateUserInput): User!
+    uploadFile(file: Upload!, id: ID!): FileModel!
+    upsertCategorie(input: UpsertCategorieInput): Categorie!
+    upsertCategorieUnitesDeMesure(input: UpsertCategorieUnitesDeMesureInput): CategorieUnitesDeMesure!
+    upsertClient(input: UpsertClientInput): Client!
+    upsertCommande(input: UpsertCommandeInput): Commande!
+    upsertFacture(input: UpsertFactureInput): Facture!
+    upsertFileModel(input: UpsertFileModelInput): FileModel!
+    upsertNationalite(input: UpsertNationaliteInput): Nationalite!
+    upsertPermission(input: UpsertPermissionInput): Permission!
+    upsertPersonne(input: UpsertPersonneInput): Personne!
+    upsertRole(input: UpsertRoleInput): Role!
+    upsertSetting(input: UpsertSettingInput): Setting!
+    upsertStock(input: UpsertStockInput): Stock!
+    upsertTransaction(input: UpsertTransactionInput): Transaction!
+    upsertUnitesDeMesure(input: UpsertUnitesDeMesureInput): UnitesDeMesure!
+    upsertUser(input: UpsertUserInput): User!
+    verifyEmail(input: VerifyEmailInput!): AuthPayload!
+}
+
+type Nationalite implements HasCreatedAt & HasNode & HasNom & HasSlug & HasUpdatedAt {
+    created_at: DateTimeTz!
+    id: ID!
+    nom: String!
+    slug: String!
+    updated_at: DateTimeTz!
+}
+
+"A paginated list of Nationalite items."
+type NationalitePaginator {
+    "A list of Nationalite items."
+    data: [Nationalite!]!
+    "Pagination information about the list of items."
+    paginatorInfo: PaginatorInfo!
+}
+
+"Pagination information about the corresponding list of items."
+type PageInfo {
+    "Count of nodes in current request."
+    count: Int
+    "Current page of request."
+    currentPage: Int
+    "When paginating forwards, the cursor to continue."
+    endCursor: String
+    "When paginating forwards, are there more items?"
+    hasNextPage: Boolean!
+    "When paginating backwards, are there more items?"
+    hasPreviousPage: Boolean!
+    "Last page in connection."
+    lastPage: Int
+    "When paginating backwards, the cursor to continue."
+    startCursor: String
+    "Total number of node in connection."
+    total: Int
+}
+
+"Pagination information about the corresponding list of items."
+type PaginatorInfo {
+    "Count of available items in the page."
+    count: Int!
+    "Current pagination page."
+    currentPage: Int!
+    "Index of first item in the current page."
+    firstItem: Int
+    "If collection has more pages."
+    hasMorePages: Boolean!
+    "Index of last item in the current page."
+    lastItem: Int
+    "Last page number of the collection."
+    lastPage: Int!
+    "Number of items per page in the collection."
+    perPage: Int!
+    "Total items available in the collection."
+    total: Int!
+}
+
+type Permission implements HasCreatedAt & HasDescription & HasNode & HasNom & HasSlug & HasUpdatedAt {
+    created_at: DateTimeTz!
+    description: String!
+    id: ID!
+    nom: String!
+    slug: String!
+    updated_at: DateTimeTz!
+}
+
+"A paginated list of Permission items."
+type PermissionPaginator {
+    "A list of Permission items."
+    data: [Permission!]!
+    "Pagination information about the list of items."
+    paginatorInfo: PaginatorInfo!
+}
+
+type PermissionRole implements HasCreatedAt & HasNode & HasUpdatedAt {
+    created_at: DateTimeTz!
+    id: ID!
+    updated_at: DateTimeTz!
+}
+
+type PermissionUser implements HasCreatedAt & HasNode & HasUpdatedAt {
+    created_at: DateTimeTz!
+    date_expiration: DateTimeTz!
+    id: ID!
+    updated_at: DateTimeTz!
+}
+
+type Personne implements HasCreatedAt & HasDeletedAt & HasNode & HasNom & HasUpdatedAt & MayBeHasAdresse1 & MayBeHasAdresse2 & MayBeHasContact1 & MayBeHasContact2 & MayBeHasEmail & MayBeHasImage {
+    adresse_1: String
+    adresse_2: String
+    cni: String
+    contact_1: String
+    contact_2: String
+    created_at: DateTimeTz!
+    date_de_naiss: Date
+    deleted_at: DateTimeTz
+    email: String
+    id: ID!
+    image: FileModel
+    imagePieceIdentite: FileModel
+    nationalite: Nationalite
+    nom: String!
+    sexe: Sexe
+    updated_at: DateTimeTz!
+}
+
+"A paginated list of Personne items."
+type PersonnePaginator {
+    "A list of Personne items."
+    data: [Personne!]!
+    "Pagination information about the list of items."
+    paginatorInfo: PaginatorInfo!
+}
+
+type Query {
+    Commande: Commande
+    Commandes(
+        "Limits number of fetched elements."
+        first: Int!,
+        "The offset from which elements are returned."
+        page: Int
+    ): CommandePaginator
+    Facture: Facture
+    Factures(
+        "Limits number of fetched elements."
+        first: Int!,
+        "The offset from which elements are returned."
+        page: Int
+    ): FacturePaginator
+    Stock: Stock
+    Stocks(
+        "Limits number of fetched elements."
+        first: Int!,
+        "The offset from which elements are returned."
+        page: Int
+    ): StockPaginator
+    Transaction: Transaction
+    Transactions(
+        "Limits number of fetched elements."
+        first: Int!,
+        "The offset from which elements are returned."
+        page: Int
+    ): TransactionPaginator
+    categorie: Categorie!
+    categorieUnitesDeMesure: CategorieUnitesDeMesure
+    categorieUnitesDeMesures(
+        "Limits number of fetched elements."
+        first: Int!,
+        "The offset from which elements are returned."
+        page: Int
+    ): CategorieUnitesDeMesurePaginator
+    categories(
+        "Limits number of fetched elements."
+        first: Int!,
+        "The offset from which elements are returned."
+        page: Int,
+        root: Boolean,
+        where: QueryCategoriesWhereWhereConditions
+    ): CategoriePaginator
+    client: Client
+    clients(
+        "Limits number of fetched elements."
+        first: Int!,
+        "The offset from which elements are returned."
+        page: Int
+    ): ClientPaginator
+    depot: FileModel
+    depots(
+        "Limits number of fetched elements."
+        first: Int!,
+        "The offset from which elements are returned."
+        page: Int
+    ): FileModelPaginator
+    file: FileModel
+    files(
+        "Limits number of fetched elements."
+        first: Int!,
+        "The offset from which elements are returned."
+        page: Int
+    ): FileModelPaginator
+    nationalite: Nationalite
+    nationalites(
+        "Limits number of fetched elements."
+        first: Int!,
+        "The offset from which elements are returned."
+        page: Int
+    ): NationalitePaginator
+    permission: Permission
+    permissions(
+        "Limits number of fetched elements."
+        first: Int!,
+        "The offset from which elements are returned."
+        page: Int
+    ): PermissionPaginator
+    personne: Personne
+    personnes(
+        "Limits number of fetched elements."
+        first: Int!,
+        "The offset from which elements are returned."
+        page: Int
+    ): PersonnePaginator
+    role: Role
+    roles(
+        "Limits number of fetched elements."
+        first: Int!,
+        "The offset from which elements are returned."
+        page: Int
+    ): RolePaginator
+    setting: Setting
+    settings(
+        "Limits number of fetched elements."
+        first: Int!,
+        "The offset from which elements are returned."
+        page: Int
+    ): SettingPaginator
+    uniteDeMesure(id: ID!): UnitesDeMesure
+    uniteDeMesures(root: Boolean, where: QueryUniteDeMesuresWhereWhereConditions): [UnitesDeMesure!]!
+    user: User
+    users(
+        "Limits number of fetched elements."
+        first: Int!,
+        "The offset from which elements are returned."
+        page: Int
+    ): UserPaginator
+}
+
+type RefreshTokenPayload {
+    access_token: String!
+    expires_in: Int!
+    refresh_token: String!
+    token_type: String!
+}
+
+type RegisterResponse {
+    status: RegisterStatuses!
+    tokens: AuthPayload
+}
+
+type Role implements HasCreatedAt & HasDescription & HasNode & HasNom & HasUpdatedAt {
+    active: Int!
+    created_at: DateTimeTz!
+    description: String!
+    id: ID!
+    level: Int
+    nom: String!
+    permissions: [Permission!]
+    slug: TypeRole!
+    updated_at: DateTimeTz!
+}
+
+"A paginated list of Role items."
+type RolePaginator {
+    "A list of Role items."
+    data: [Role!]!
+    "Pagination information about the list of items."
+    paginatorInfo: PaginatorInfo!
+}
+
+type Setting implements HasCreatedAt & HasNode & HasUpdatedAt {
+    created_at: DateTimeTz!
+    description: String
+    id: ID!
+    nom: String!
+    pivot: SettingUser
+    slug: String!
+    type: String!
+    updated_at: DateTimeTz!
+    value: SettingValue!
+}
+
+"A paginated list of Setting items."
+type SettingPaginator {
+    "A list of Setting items."
+    data: [Setting!]!
+    "Pagination information about the list of items."
+    paginatorInfo: PaginatorInfo!
+}
+
+type SettingUser {
+    created_at: DateTimeTz!
+    updated_at: DateTimeTz!
+    value: SettingValue
+}
+
+type SettingValue {
+    value: Mixed
+    valueType: String!
+}
+
+"Pagination information about the corresponding list of items."
+type SimplePaginatorInfo {
+    "Count of available items in the page."
+    count: Int!
+    "Current pagination page."
+    currentPage: Int!
+    "Index of first item in the current page."
+    firstItem: Int
+    "Index of last item in the current page."
+    lastItem: Int
+    "Number of items per page in the collection."
+    perPage: Int!
+}
+
+type Stock implements HasCreatedAt & HasImage & HasNode & HasNom & HasSlug & HasUpdatedAt {
+    StockDetail: CommandeStock!
+    categorie: CategorieUnitesDeMesure!
+    commande: [Commande!]
+    created_at: DateTimeTz!
+    id: ID!
+    image: FileModel!
+    nom: String!
+    prix_de_vente_unitaire: Float
+    slug: String!
+    updated_at: DateTimeTz!
+    user: User!
+}
+
+"A paginated list of Stock items."
+type StockPaginator {
+    "A list of Stock items."
+    data: [Stock!]!
+    "Pagination information about the list of items."
+    paginatorInfo: PaginatorInfo!
+}
+
+type Transaction implements HasCreatedAt & HasDeletedAt & HasNode & HasUpdatedAt {
+    Depot: Depot!
+    commade: Commande!
+    created_at: DateTimeTz!
+    date: DateTimeTz!
+    deleted_at: DateTimeTz
+    factures: [Facture!]!
+    id: ID!
+    montant: Float!
+    updated_at: DateTimeTz!
+}
+
+"A paginated list of Transaction items."
+type TransactionPaginator {
+    "A list of Transaction items."
+    data: [Transaction!]!
+    "Pagination information about the list of items."
+    paginatorInfo: PaginatorInfo!
+}
+
+type UnitesDeMesure implements HasCreatedAt & HasNode & HasNom & HasSlug & HasUpdatedAt {
+    ancestors: [UnitesDeMesure!]!
+    categories: [Categorie!]!
+    children: [UnitesDeMesure!]!
+    created_at: DateTimeTz!
+    description: String
+    hasChildren: Int!
+    id: ID!
+    nom: String!
+    pivot: CategorieUnitesDeMesure
+    slug: String!
+    symbole: String
+    updated_at: DateTimeTz!
+}
+
+type UpdatePasswordResponse {
+    message: String
+    status: String!
+}
+
+type User implements HasCreatedAt & HasDeletedAt & HasNode & HasUpdatedAt {
+    created_at: DateTimeTz!
+    deleted_at: DateTimeTz
+    depot: Depot
+    id: ID!
+    identite: Personne!
+    permissions: [Permission!]
+    roles: [Role!]!
+    updated_at: DateTimeTz!
+    username: String!
+}
+
+"A paginated list of User items."
+type UserPaginator {
+    "A list of User items."
+    data: [User!]!
+    "Pagination information about the list of items."
+    paginatorInfo: PaginatorInfo!
+}
+
+enum EtatCommande {
+    RECENT
+    USAGE
+}
+
+"Allowed column names for the `where` argument on field `categories` on type `Query`."
+enum QueryCategoriesWhereColumn {
+    CATEGORIE_ID
+}
+
+"Allowed column names for the `where` argument on field `uniteDeMesures` on type `Query`."
+enum QueryUniteDeMesuresWhereColumn {
+    ID
+    UNITES_DE_MESURE_ID
+}
+
+enum RegisterStatuses {
+    MUST_VERIFY_EMAIL
+    SUCCESS
+}
+
+"The available SQL operators that are used to filter query results."
+enum SQLOperator {
+    "Whether a value is within a range of values (`BETWEEN`)"
+    BETWEEN
+    "Equal operator (`=`)"
+    EQ
+    "Greater than operator (`>`)"
+    GT
+    "Greater than or equal operator (`>=`)"
+    GTE
+    "Whether a value is within a set of values (`IN`)"
+    IN
+    "Whether a value is not null (`IS NOT NULL`)"
+    IS_NOT_NULL
+    "Whether a value is null (`IS NULL`)"
+    IS_NULL
+    "Simple pattern matching (`LIKE`)"
+    LIKE
+    "Less than operator (`<`)"
+    LT
+    "Less than or equal operator (`<=`)"
+    LTE
+    "Not equal operator (`!=`)"
+    NEQ
+    "Whether a value is not within a range of values (`NOT BETWEEN`)"
+    NOT_BETWEEN
+    "Whether a value is not within a set of values (`NOT IN`)"
+    NOT_IN
+    "Negation of simple pattern matching (`NOT LIKE`)"
+    NOT_LIKE
+}
+
+enum Sexe {
+    FEMME
+    HOMME
+}
+
+"The available directions for ordering a list of records."
+enum SortOrder {
+    "Sort records in ascending order."
+    ASC
+    "Sort records in descending order."
+    DESC
+}
+
+"Specify if you want to include or exclude trashed results from a query."
+enum Trashed {
+    "Only return trashed results."
+    ONLY
+    "Return both trashed and non-trashed results."
+    WITH
+    "Only return non-trashed results."
+    WITHOUT
+}
+
+enum TypeClient {
+    Client
+    FOURNISSEUR
+}
+
+enum TypeCommande {
+    AQUISITION
+    VENTE
+}
+
+enum TypeRole {
+    ADMINISTRATEUR
+    GERANT
+    SUPER_ADMINISTRATEUR
+    UTILISATEUR
+}
+
+enum _ {
+    VOID
+}
+
+input ConnectCommande {
+    id: ID!
+    prix_achat_unitaire: Float!
+    prix_de_vente_unitaire: Float!
+    quantite: Float!
+    remise: Float!
+    remise_description: String!
+    taxe: Float!
+    taxe_description: String!
+}
+
+input ConnectPermission {
+    date_expiration: DateTimeTz
+    id: ID!
+}
+
+input ConnectSettingBelongsToMany {
+    connect: [ConnectSettingInput!]
+    sync: [ConnectSettingInput!]
+    syncWithoutDetaching: [ConnectSettingInput!]
+}
+
+input ConnectSettingInput {
+    id: ID
+    value: SettingValueInput
+}
+
+input ConnectStock {
+    id: ID!
+    prix_achat_unitaire: Float!
+    prix_de_vente_unitaire: Float!
+    quantite: Float!
+    remise: Float!
+    remise_description: String!
+    taxe: Float!
+    taxe_description: String!
+}
+
+input CreateCategorieBelongsTo {
+    connect: ID
+    create: CreateCategorieInput
+    update: UpdateCategorieInput
+    upsert: UpsertCategorieInput
+}
+
+input CreateCategorieBelongsToMany {
+    connect: [ID!]
+    create: [CreateCategorieInput!]
+    sync: [ID!]
+    upsert: [UpsertCategorieInput!]
+}
+
+input CreateCategorieInput {
+    children: CreateCategorieBelongsToMany!
+    description: String
+    image: CreateFileModelBelongsTo!
+    nom: String!
+    parent_id: ID
+    uniteDeMesure: CreateUnitesDeMesureBelongsToMany!
+}
+
+input CreateCategorieUnitesDeMesureBelongsTo {
+    connect: ID
+    create: CreateCategorieUnitesDeMesureInput
+    update: UpdateCategorieUnitesDeMesureInput
+    upsert: UpsertCategorieUnitesDeMesureInput
+}
+
+input CreateCategorieUnitesDeMesureInput {
+    cathegorie: CreateCategorieBelongsTo!
+    uniteDeMesure: CreateUserBelongsTo!
+}
+
+input CreateClientBelongsTo {
+    connect: ID
+    create: CreateClientInput
+    update: UpdateClientInput
+    upsert: UpsertClientInput
+}
+
+input CreateClientInput {
+    adresse_1: String!
+    commandes: UpdateCommandeHasMany!
+    contact_1: String!
+    contact_2: String!
+    email: String!
+    image: CreateFileModelBelongsTo!
+    nom: String!
+}
+
+input CreateCommandeBelongsTo {
+    connect: ID
+    create: CreateCommandeInput
+    update: UpdateCommandeInput
+    upsert: UpsertCommandeInput
+}
+
+input CreateCommandeBelongsToMany {
+    connect: [ConnectCommande!]
+    create: [CreateCommandeInput!]
+    sync: [ConnectCommande!]
+    upsert: [UpsertCommandeInput!]
+}
+
+input CreateCommandeInput {
+    age: DateTimeTz!
+    client: CreateClientBelongsTo!
+    date: DateTimeTz!
+    date_expiration: DateTimeTz!
+    depot: CreateFileModelBelongsTo!
+    description: String!
+    etat: EtatCommande!
+    stock: CreateStockBelongsToMany!
+    transactions: UpdateTransactionHasMany!
+    type: TypeCommande!
+    user: CreateUserBelongsTo!
+}
+
+input CreateDepotBelongsTo {
+    connect: ID
+    create: CreateDepotInput
+    update: UpdateDepotInput
+    upsert: UpsertDepotInput
+}
+
+input CreateDepotInput {
+    adresse_1: String!
+    contact_1: String!
+    contact_2: String!
+    email: String!
+    image: CreateFileModelBelongsTo!
+    nom: String!
+    region: String!
+    slug: String!
+    transactions: UpdateTransactionHasMany!
+    ville: String!
+    web: String!
+}
+
+input CreateFactureBelongsTo {
+    connect: ID
+    create: CreateFactureInput
+    update: UpdateFactureInput
+    upsert: UpsertFactureInput
+}
+
+input CreateFactureInput {
+    date: DateTimeTz!
+    montant: Float!
+    transaction: CreateTransactionBelongsTo!
+}
+
+input CreateFileModelBelongsTo {
+    connect: ID
+    create: CreateFileModelInput
+    update: UpdateFileModelInput
+    upsert: UpsertFileModelInput
+}
+
+input CreateFileModelInput {
+    exist: Boolean!
+    nom: String
+    path: String
+    thumbnail_path: String
+    thumbnail_url: String
+    type: String
+    url: String
+}
+
+input CreateNationaliteBelongsTo {
+    connect: ID
+    create: CreateNationaliteInput
+    update: UpdateNationaliteInput
+    upsert: UpsertNationaliteInput
+}
+
+input CreateNationaliteInput {
+    nom: String!
+    slug: String!
+}
+
+input CreatePermissionBelongsTo {
+    connect: ID
+    create: CreatePermissionInput
+    update: UpdatePermissionInput
+    upsert: UpsertPermissionInput
+}
+
+input CreatePermissionBelongsToMany {
+    connect: [ConnectPermission!]
+    create: [CreatePermissionInput!]
+    sync: [ConnectPermission!]
+    upsert: [UpsertPermissionInput!]
+}
+
+input CreatePermissionInput {
+    description: String!
+    nom: String!
+    slug: String!
+}
+
+input CreatePersonneBelongsTo {
+    connect: ID
+    create: CreatePersonneInput
+    update: UpdatePersonneInput
+    upsert: UpsertPersonneInput
+}
+
+input CreatePersonneInput {
+    adresse_1: String
+    adresse_2: String
+    cni: String
+    contact_1: String
+    contact_2: String
+    date_de_naiss: Date
+    email: String
+    image: CreateFileModelBelongsTo!
+    imagePieceIdentite: CreateFileModelBelongsTo
+    nationalite: CreateNationaliteBelongsTo!
+    nom: String!
+    sexe: Sexe
+}
+
+input CreateRoleBelongsTo {
+    connect: ID
+    create: CreateRoleInput
+    update: UpdateRoleInput
+    upsert: UpsertRoleInput
+}
+
+input CreateRoleBelongsToMany {
+    connect: [ID!]
+    create: [CreateRoleInput!]
+    sync: [ID!]
+    upsert: [UpsertRoleInput!]
+}
+
+input CreateRoleInput {
+    active: Int!
+    description: String!
+    level: Int!
+    nom: String!
+    permission: CreatePermissionBelongsToMany!
+    slug: String!
+}
+
+input CreateSettingBelongsTo {
+    connect: ID
+    create: CreateSettingInput
+    update: UpdateSettingInput
+    upsert: UpsertSettingInput
+}
+
+input CreateSettingBelongsToMany {
+    connect: [ConnectSettingInput!]
+    create: [CreateSettingInput!]
+    sync: [ConnectSettingInput!]
+    upsert: [UpsertSettingInput!]
+}
+
+input CreateSettingInput {
+    description: String!
+    nom: String!
+    slug: String!
+    type: String!
+    value: SettingValueInput!
+}
+
+input CreateStockBelongsTo {
+    connect: ID
+    create: CreateStockInput
+    update: UpdateStockInput
+    upsert: UpsertStockInput
+}
+
+input CreateStockBelongsToMany {
+    connect: [ConnectStock!]
+    create: [CreateStockInput!]
+    sync: [ConnectStock!]
+    upsert: [UpsertStockInput!]
+}
+
+input CreateStockInput {
+    categorie: CreateCategorieUnitesDeMesureBelongsTo!
+    commande: CreateCommandeBelongsToMany!
+    image: CreateFileModelBelongsTo!
+    nom: String!
+    prix_de_vente_unitaire: Float!
+    slug: String!
+    user: CreateUserBelongsTo!
+}
+
+input CreateTransactionBelongsTo {
+    connect: ID
+    create: CreateTransactionInput
+    update: UpdateTransactionInput
+    upsert: UpsertTransactionInput
+}
+
+input CreateTransactionInput {
+    Depot: CreateDepotBelongsTo!
+    commade: CreateCommandeBelongsTo!
+    date: DateTimeTz!
+    factures: UpdateFactureHasMany!
+    montant: Float!
+}
+
+input CreateUnitesDeMesureBelongsTo {
+    connect: ID
+    create: CreateUnitesDeMesureInput
+    update: UpdateUnitesDeMesureInput
+    upsert: UpsertUnitesDeMesureInput
+}
+
+input CreateUnitesDeMesureBelongsToMany {
+    connect: [ID!]
+    create: [CreateUnitesDeMesureInput!]
+    sync: [ID!]
+    upsert: [UpsertUnitesDeMesureInput!]
+}
+
+input CreateUnitesDeMesureInput {
+    categories: CreateCategorieBelongsToMany!
+    children: UpdateUnitesDeMesureBelongsToMany!
+    description: String
+    nom: String!
+    parent_id: ID
+    slug: String!
+    symbole: String!
+}
+
+input CreateUserBelongsTo {
+    connect: ID
+    create: CreateUserInput
+    update: UpdateUserInput
+    upsert: UpsertUserInput
+}
+
+input CreateUserBelongsToMany {
+    connect: [ID!]
+    create: [CreateUserInput!]
+    sync: [ID!]
+    upsert: [UpsertUserInput!]
+}
+
+input CreateUserInput {
+    depot: CreateDepotBelongsTo!
+    identite: CreatePersonneBelongsTo!
+    password: String!
+    permissions: CreatePermissionBelongsToMany!
+    roles: CreateRoleBelongsToMany!
+    settings: ConnectSettingBelongsToMany
+    username: String!
+}
+
+input ForgotPasswordInput {
+    email: String!
+}
+
+input LoginInput {
+    password: String!
+    username: String!
+}
+
+input NewPasswordWithCodeInput {
+    email: String!
+    password: String!
+    password_confirmation: String!
+    token: String!
+}
+
+"Allows ordering a list of records."
+input OrderByClause {
+    "The column that is used for ordering."
+    column: String!
+    "The direction that is used for ordering."
+    order: SortOrder!
+}
+
+"Dynamic WHERE conditions for the `where` argument on the query `categories`."
+input QueryCategoriesWhereWhereConditions {
+    "A set of conditions that requires all conditions to match."
+    AND: [QueryCategoriesWhereWhereConditions!]
+    "Check whether a relation exists. Extra conditions or a minimum amount can be applied."
+    HAS: QueryCategoriesWhereWhereConditionsRelation
+    "A set of conditions that requires at least one condition to match."
+    OR: [QueryCategoriesWhereWhereConditions!]
+    "The column that is used for the condition."
+    column: QueryCategoriesWhereColumn
+    "The operator that is used for the condition."
+    operator: SQLOperator
+    "The value that is used for the condition."
+    value: Mixed
+}
+
+"Dynamic HAS conditions for WHERE conditions for the `where` argument on the query `categories`."
+input QueryCategoriesWhereWhereConditionsRelation {
+    "The amount to test."
+    amount: Int
+    "Additional condition logic."
+    condition: QueryCategoriesWhereWhereConditions
+    "The comparison operator to test against the amount."
+    operator: SQLOperator
+    "The relation that is checked."
+    relation: String!
+}
+
+"Dynamic WHERE conditions for the `where` argument on the query `uniteDeMesures`."
+input QueryUniteDeMesuresWhereWhereConditions {
+    "A set of conditions that requires all conditions to match."
+    AND: [QueryUniteDeMesuresWhereWhereConditions!]
+    "Check whether a relation exists. Extra conditions or a minimum amount can be applied."
+    HAS: QueryUniteDeMesuresWhereWhereConditionsRelation
+    "A set of conditions that requires at least one condition to match."
+    OR: [QueryUniteDeMesuresWhereWhereConditions!]
+    "The column that is used for the condition."
+    column: QueryUniteDeMesuresWhereColumn
+    "The operator that is used for the condition."
+    operator: SQLOperator
+    "The value that is used for the condition."
+    value: Mixed
+}
+
+"Dynamic HAS conditions for WHERE conditions for the `where` argument on the query `uniteDeMesures`."
+input QueryUniteDeMesuresWhereWhereConditionsRelation {
+    "The amount to test."
+    amount: Int
+    "Additional condition logic."
+    condition: QueryUniteDeMesuresWhereWhereConditions
+    "The comparison operator to test against the amount."
+    operator: SQLOperator
+    "The relation that is checked."
+    relation: String!
+}
+
+input RefreshTokenInput {
+    refresh_token: String
+}
+
+input RegisterInput {
+    email: String!
+    name: String!
+    password: String!
+    password_confirmation: String!
+}
+
+input SettingValueInput {
+    value: Mixed
+    valueType: String!
+}
+
+input SocialLoginInput {
+    provider: String!
+    token: String!
+}
+
+input UpdateCategorieBelongsTo {
+    connect: ID
+    create: CreateCategorieInput
+    delete: Boolean
+    disconnect: Boolean
+    update: UpdateCategorieInput
+    upsert: UpsertCategorieInput
+}
+
+input UpdateCategorieBelongsToMany {
+    connect: [ID!]
+    create: [CreateCategorieInput!]
+    delete: [ID!]
+    disconnect: [ID!]
+    sync: [ID!]
+    syncWithoutDetaching: [ID!]
+    update: [UpdateCategorieInput!]
+    upsert: [UpsertCategorieInput!]
+}
+
+input UpdateCategorieHasMany {
+    create: [CreateCategorieInput!]
+    delete: [ID!]
+    update: [UpdateCategorieInput!]
+    upsert: [UpsertCategorieInput!]
+}
+
+input UpdateCategorieInput {
+    children: UpdateCategorieHasMany
+    description: String
+    id: ID!
+    image: CreateFileModelBelongsTo
+    nom: String
+    parent_id: ID
+    uniteDeMesure: CreateUnitesDeMesureBelongsToMany
+}
+
+input UpdateCategorieUnitesDeMesureBelongsTo {
+    connect: ID
+    create: CreateCategorieUnitesDeMesureInput
+    delete: Boolean
+    disconnect: Boolean
+    update: UpdateCategorieUnitesDeMesureInput
+    upsert: UpsertCategorieUnitesDeMesureInput
+}
+
+input UpdateCategorieUnitesDeMesureInput {
+    cathegorie: CreateCategorieBelongsTo
+    id: ID!
+    uniteDeMesure: CreateUserBelongsTo
+}
+
+input UpdateClientBelongsTo {
+    connect: ID
+    create: CreateClientInput
+    delete: Boolean
+    disconnect: Boolean
+    update: UpdateClientInput
+    upsert: UpsertClientInput
+}
+
+input UpdateClientInput {
+    adresse_1: String
+    commandes: UpdateCommandeHasMany
+    contact_1: String
+    contact_2: String
+    email: String
+    id: ID!
+    image: UpdateFileModelBelongsTo
+    nom: String
+}
+
+input UpdateCommandeBelongsTo {
+    connect: ID
+    create: CreateCommandeInput
+    delete: Boolean
+    disconnect: Boolean
+    update: UpdateCommandeInput
+    upsert: UpsertCommandeInput
+}
+
+input UpdateCommandeBelongsToMany {
+    connect: [ID!]
+    create: [CreateCommandeInput!]
+    delete: [ID!]
+    disconnect: [ID!]
+    sync: [ConnectCommande!]
+    syncWithoutDetaching: [ConnectCommande!]
+    update: [UpdateCommandeInput!]
+    upsert: [UpsertCommandeInput!]
+}
+
+input UpdateCommandeHasMany {
+    create: [CreateCommandeInput!]
+    delete: [ID!]
+    update: [UpdateCommandeInput!]
+    upsert: [UpsertCommandeInput!]
+}
+
+input UpdateCommandeInput {
+    age: DateTimeTz
+    client: CreateClientBelongsTo
+    date: DateTimeTz
+    date_expiration: DateTimeTz
+    depot: CreateFileModelBelongsTo
+    description: String
+    etat: EtatCommande
+    id: ID!
+    stock: CreateStockBelongsToMany
+    transactions: UpdateTransactionHasMany
+    type: TypeCommande
+    user: CreateUserBelongsTo
+}
+
+input UpdateDepotBelongsTo {
+    connect: ID
+    create: CreateDepotInput
+    disconnect: Boolean
+    update: UpdateDepotInput
+    upsert: UpsertDepotInput
+}
+
+input UpdateDepotInput {
+    adresse_1: String
+    contact_1: String
+    contact_2: String
+    email: String
+    id: ID!
+    image: UpdateFileModelBelongsTo
+    nom: String
+    region: String
+    slug: String
+    transactions: UpdateTransactionHasMany
+    ville: String
+    web: String
+}
+
+input UpdateFactureBelongsTo {
+    connect: ID
+    create: CreateFactureInput
+    delete: Boolean
+    disconnect: Boolean
+    update: UpdateFactureInput
+    upsert: UpsertFactureInput
+}
+
+input UpdateFactureHasMany {
+    create: [CreateFactureInput!]
+    delete: [ID!]
+    update: [UpdateFactureInput!]
+    upsert: [UpsertFactureInput!]
+}
+
+input UpdateFactureInput {
+    date: DateTimeTz
+    id: ID!
+    montant: Float
+    transaction: CreateTransactionBelongsTo
+}
+
+input UpdateFileModelBelongsTo {
+    connect: ID
+    create: CreateFileModelInput
+    delete: Boolean
+    disconnect: Boolean
+    update: UpdateFileModelInput
+    upsert: UpsertFileModelInput
+}
+
+input UpdateFileModelInput {
+    exist: Boolean
+    id: ID!
+    nom: String
+    path: String
+    thumbnail_path: String
+    thumbnail_url: String
+    type: String
+    url: String
+}
+
+input UpdateNationaliteBelongsTo {
+    connect: ID
+    create: CreateNationaliteInput
+    delete: Boolean
+    disconnect: Boolean
+    update: UpdateNationaliteInput
+    upsert: UpsertNationaliteInput
+}
+
+input UpdateNationaliteInput {
+    id: ID!
+    nom: String
+    slug: String
+}
+
+input UpdatePassword {
+    old_password: String!
+    password: String!
+    password_confirmation: String!
+}
+
+input UpdatePermissionBelongsTo {
+    connect: ID
+    create: CreatePermissionInput
+    delete: Boolean
+    disconnect: Boolean
+    update: UpdatePermissionInput
+    upsert: UpsertPermissionInput
+}
+
+input UpdatePermissionBelongsToMany {
+    connect: [ID!]
+    create: [CreatePermissionInput!]
+    delete: [ID!]
+    disconnect: [ID!]
+    sync: [ConnectPermission!]
+    syncWithoutDetaching: [ConnectPermission!]
+    update: [UpdatePermissionInput!]
+    upsert: [UpsertPermissionInput!]
+}
+
+input UpdatePermissionInput {
+    description: String
+    id: ID!
+    nom: String
+    slug: String
+}
+
+input UpdatePersonneBelongsTo {
+    connect: ID
+    create: CreatePersonneInput
+    delete: Boolean
+    disconnect: Boolean
+    update: UpdatePersonneInput
+    upsert: UpsertPersonneInput
+}
+
+input UpdatePersonneInput {
+    adresse_1: String
+    adresse_2: String
+    cni: String
+    contact_1: String
+    contact_2: String
+    date_de_naiss: Date
+    email: String
+    id: ID!
+    image: UpdateFileModelBelongsTo
+    imagePieceIdentite: CreateFileModelBelongsTo!
+    nationalite: UpdateNationaliteBelongsTo
+    nom: String
+    region: String
+    sexe: Sexe
+    ville: String
+}
+
+input UpdateRoleBelongsTo {
+    connect: ID
+    create: CreateRoleInput
+    delete: Boolean
+    disconnect: Boolean
+    update: UpdateRoleInput
+    upsert: UpsertRoleInput
+}
+
+input UpdateRoleBelongsToMany {
+    connect: [ID!]
+    create: [CreateRoleInput!]
+    delete: [ID!]
+    disconnect: [ID!]
+    sync: [ID!]
+    syncWithoutDetaching: [ID!]
+    update: [UpdateRoleInput!]
+    upsert: [UpsertRoleInput!]
+}
+
+input UpdateRoleInput {
+    active: Int
+    description: String
+    id: ID!
+    level: Int
+    nom: String
+    permission: UpdatePermissionBelongsToMany
+    slug: String
+}
+
+input UpdateSettingBelongsTo {
+    connect: ID
+    create: CreateSettingInput
+    delete: Boolean
+    disconnect: Boolean
+    update: UpdateSettingInput
+    upsert: UpsertSettingInput
+}
+
+input UpdateSettingBelongsToMany {
+    connect: [ConnectSettingInput!]
+    create: [CreateSettingInput!]
+    delete: [ID!]
+    disconnect: [ID!]
+    sync: [ConnectSettingInput!]
+    syncWithoutDetaching: [ConnectSettingInput!]
+    update: [UpdateSettingInput!]
+    upsert: [UpsertSettingInput!]
+}
+
+input UpdateSettingInput {
+    description: String
+    id: ID!
+    nom: String
+    slug: String
+    type: String
+    value: SettingValueInput!
+}
+
+input UpdateStockBelongsTo {
+    connect: ID
+    create: CreateStockInput
+    delete: Boolean
+    disconnect: Boolean
+    update: UpdateStockInput
+    upsert: UpsertStockInput
+}
+
+input UpdateStockBelongsToMany {
+    connect: [ID!]
+    create: [CreateStockInput!]
+    delete: [ID!]
+    disconnect: [ID!]
+    sync: [ConnectStock!]
+    syncWithoutDetaching: [ConnectStock!]
+    update: [UpdateStockInput!]
+    upsert: [UpsertStockInput!]
+}
+
+input UpdateStockHasMany {
+    create: [CreateStockInput!]
+    delete: [ID!]
+    update: [UpdateStockInput!]
+    upsert: [UpsertStockInput!]
+}
+
+input UpdateStockInput {
+    categorie: CreateCategorieUnitesDeMesureBelongsTo!
+    commande: CreateCommandeBelongsToMany!
+    id: ID!
+    image: CreateFileModelBelongsTo!
+    prix_de_vente_unitaire: Float!
+    slug: String!
+    user: CreateUserBelongsTo!
+}
+
+input UpdateTransactionBelongsTo {
+    connect: ID
+    create: CreateTransactionInput
+    delete: Boolean
+    disconnect: Boolean
+    update: UpdateTransactionInput
+    upsert: UpsertTransactionInput
+}
+
+input UpdateTransactionHasMany {
+    create: [CreateTransactionInput!]
+    delete: [ID!]
+    update: [UpdateTransactionInput!]
+    upsert: [UpsertTransactionInput!]
+}
+
+input UpdateTransactionInput {
+    Depot: CreateDepotBelongsTo
+    commade: CreateCommandeBelongsTo
+    date: DateTimeTz
+    factures: UpdateFactureHasMany
+    id: ID!
+    montant: Float
+}
+
+input UpdateUnitesDeMesureBelongsTo {
+    connect: ID
+    create: CreateUnitesDeMesureInput
+    delete: Boolean
+    disconnect: Boolean
+    update: UpdateUnitesDeMesureInput
+    upsert: UpsertUnitesDeMesureInput
+}
+
+input UpdateUnitesDeMesureBelongsToMany {
+    connect: [ID!]
+    create: [CreateUnitesDeMesureInput!]
+    delete: [ID!]
+    disconnect: [ID!]
+    sync: [ID!]
+    syncWithoutDetaching: [ID!]
+    update: [UpdateUnitesDeMesureInput!]
+    upsert: [UpsertUnitesDeMesureInput!]
+}
+
+input UpdateUnitesDeMesureHasMany {
+    create: [CreateUnitesDeMesureInput!]
+    delete: [ID!]
+    update: [UpdateUnitesDeMesureInput!]
+    upsert: [UpsertUnitesDeMesureInput!]
+}
+
+input UpdateUnitesDeMesureInput {
+    categories: CreateCategorieBelongsToMany
+    children: UpdateUnitesDeMesureBelongsToMany
+    description: String
+    id: ID!
+    nom: String
+    parent_id: ID
+    slug: String
+    symbole: String
+}
+
+input UpdateUserBelongsTo {
+    connect: ID
+    create: CreateUserInput
+    delete: Boolean
+    disconnect: Boolean
+    update: UpdateUserInput
+    upsert: UpsertUserInput
+}
+
+input UpdateUserBelongsToMany {
+    connect: [ID!]
+    create: [CreateUserInput!]
+    delete: [ID!]
+    disconnect: [ID!]
+    sync: [ID!]
+    syncWithoutDetaching: [ID!]
+    update: [UpdateUserInput!]
+    upsert: [UpsertUserInput!]
+}
+
+input UpdateUserInput {
+    depot: UpdateDepotBelongsTo
+    id: ID!
+    identite: UpdatePersonneBelongsTo
+    password: String!
+    permissions: UpdatePermissionBelongsToMany
+    roles: UpdateRoleBelongsToMany
+    settings: ConnectSettingBelongsToMany
+    username: String
+}
+
+input UpsertCategorieInput {
+    children: UpdateCategorieHasMany
+    description: String
+    id: ID
+    image: CreateFileModelBelongsTo
+    nom: String
+    parent_id: ID
+    uniteDeMesure: CreateUnitesDeMesureBelongsToMany
+}
+
+input UpsertCategorieUnitesDeMesureInput {
+    cathegorie: CreateCategorieBelongsTo
+    id: ID
+    uniteDeMesure: CreateUserBelongsTo
+}
+
+input UpsertClientInput {
+    adresse_1: String
+    commandes: UpdateCommandeHasMany
+    contact_1: String
+    contact_2: String
+    email: String
+    id: ID
+    image: UpdateFileModelBelongsTo
+    nom: String
+}
+
+input UpsertCommandeInput {
+    age: DateTimeTz
+    client: CreateClientBelongsTo
+    date: DateTimeTz
+    date_expiration: DateTimeTz
+    depot: CreateFileModelBelongsTo
+    description: String
+    etat: EtatCommande
+    id: ID
+    stock: CreateStockBelongsToMany
+    transactions: UpdateTransactionHasMany
+    type: TypeCommande
+    user: CreateUserBelongsTo
+}
+
+input UpsertDepotInput {
+    adresse_1: String
+    contact_1: String
+    contact_2: String
+    email: String
+    id: ID
+    image: UpdateFileModelBelongsTo
+    nom: String
+    region: String
+    slug: String
+    transactions: UpdateTransactionHasMany
+    ville: String
+    web: String
+}
+
+input UpsertFactureInput {
+    date: DateTimeTz
+    id: ID
+    montant: Float
+    transaction: CreateTransactionBelongsTo
+}
+
+input UpsertFileModelInput {
+    exist: Boolean
+    id: ID
+    nom: String
+    path: String
+    thumbnail_path: String
+    thumbnail_url: String
+    type: String
+    url: String
+}
+
+input UpsertNationaliteInput {
+    id: ID
+    nom: String
+    slug: String
+}
+
+input UpsertPermissionInput {
+    description: String
+    id: ID
+    nom: String
+    slug: String
+}
+
+input UpsertPersonneInput {
+    adresse_1: String
+    adresse_2: String
+    cni: String
+    contact_1: String
+    contact_2: String
+    date_de_naiss: Date
+    email: String
+    id: ID
+    image: UpdateFileModelBelongsTo
+    imagePieceIdentite: CreateFileModelBelongsTo!
+    nationalite: UpdateNationaliteBelongsTo
+    nom: String
+    region: String
+    sexe: Sexe
+    ville: String
+}
+
+input UpsertRoleInput {
+    active: Int
+    description: String
+    id: ID
+    level: Int
+    nom: String
+    permission: CreatePermissionBelongsToMany
+    slug: String
+}
+
+input UpsertSettingInput {
+    description: String
+    id: ID
+    nom: String
+    slug: String
+    type: String
+    value: SettingValueInput!
+}
+
+input UpsertStockInput {
+    categorie: CreateCategorieUnitesDeMesureBelongsTo!
+    commande: CreateCommandeBelongsToMany!
+    id: ID
+    image: CreateFileModelBelongsTo!
+    prix_de_vente_unitaire: Float!
+    slug: String!
+    user: CreateUserBelongsTo!
+}
+
+input UpsertTransactionInput {
+    Depot: CreateDepotBelongsTo
+    commade: CreateCommandeBelongsTo
+    date: DateTimeTz
+    facture: UpdateFactureHasMany
+    id: ID
+    montant: Float
+}
+
+input UpsertUnitesDeMesureInput {
+    categories: CreateCategorieBelongsToMany
+    children: UpdateUnitesDeMesureBelongsToMany
+    description: String
+    id: ID
+    nom: String
+    parent_id: ID
+    slug: String
+    symbole: String
+}
+
+input UpsertUserInput {
+    depot: UpdateDepotBelongsTo
+    id: ID
+    identite: UpdatePersonneBelongsTo
+    password: String!
+    permissions: UpdatePermissionBelongsToMany
+    roles: UpdateRoleBelongsToMany
+    settings: ConnectSettingBelongsToMany
+    username: String
+}
+
+input VerifyEmailInput {
+    token: String!
+}
+
+"Dynamic WHERE conditions for queries."
+input WhereConditions {
+    "A set of conditions that requires all conditions to match."
+    AND: [WhereConditions!]
+    "Check whether a relation exists. Extra conditions or a minimum amount can be applied."
+    HAS: WhereConditionsRelation
+    "A set of conditions that requires at least one condition to match."
+    OR: [WhereConditions!]
+    "The column that is used for the condition."
+    column: String
+    "The operator that is used for the condition."
+    operator: SQLOperator
+    "The value that is used for the condition."
+    value: Mixed
+}
+
+"Dynamic HAS conditions for WHERE condition queries."
+input WhereConditionsRelation {
+    "The amount to test."
+    amount: Int
+    "Additional condition logic."
+    condition: WhereConditions
+    "The comparison operator to test against the amount."
+    operator: SQLOperator
+    "The relation that is checked."
+    relation: String!
+}
+
+
+"A datetime and timezone string in ISO 8601 format `Y-m-dTH:i:sP` & e.g. `2020-04-20T13:53:12+02:00`."
+scalar DateTimeTz
+
+"""
+Loose type that allows any value. Be careful when passing in large `Int` or `Float` literals,
+as they may not be parsed correctly on the server side. Use `String` literals if you are
+dealing with really large numbers to be on the safe side.
+"""
+scalar Mixed
+
+"A date string with format `Y-m-d` & e.g. `2011-05-23`."
+scalar Date
+
+scalar Upload
+
+"A datetime string with format `Y-m-d H:i:s` & e.g. `2018-05-23 13:43:32`."
+scalar DateTime

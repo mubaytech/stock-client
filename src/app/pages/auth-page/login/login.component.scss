@@ -1,0 +1,48 @@
+
+.login-body {
+  ion-item {
+
+    //border-radius: 0.6rem;
+    //margin-bottom: 10px;
+    //--background: rgba(var(--ion-color-dark-rgb), 0.09);
+    //box-shadow: 0 0 7px rgba(0, 0, 0, .1);
+    --border-width: 0px;
+    --border-radius: 0px;
+    --inner-border-width: 0;
+    --min-height: 50px;
+    border-color: rgba(var(--ion-color-contrast-rgb), 0.2);
+    border-width: 0 0 1px 0;
+    overflow: hidden;
+    border-radius: 0;
+    --highlight-height: 0 !important;
+    box-shadow: none;
+    &.ion-invalid.ion-touched, &.ion-invalid.ion-has-focus {
+      //box-shadow: 0 0 7px rgba(255, 0, 0, .5);
+      //border-color: rgba(var(--ion-color-danger-rgb), .7);
+    }
+  }
+
+  ion-button {
+    --box-shadow: none;
+  }
+
+  ion-card {
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+:-webkit-autofill {
+  border-radius: 0;
+}
+
+
+ion-progress-bar::part(progress) {
+  @apply bg-gradient-to-l from-primary-contrast;
+  border-radius: 0 var(--border-radius, 0) var(--border-radius, 0) 0
+}
+
+ion-button {
+  --padding-start: 0;
+  --padding-end: 0;
+}

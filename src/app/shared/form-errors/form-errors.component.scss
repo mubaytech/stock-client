@@ -1,0 +1,37 @@
+.error-container {
+  min-height: 23.3px;
+  color: var(--ion-color-base);
+  opacity: .6;
+  margin-top: .3px;
+  background-color: inherit;
+
+}
+
+.ion {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ion-color-base);
+  border-radius: 50%;
+}
+
+:host {
+  text-align: left;
+}
+
+:host .center {
+  div, span {
+    text-align: center;
+  }
+  background-color: inherit;
+  color: inherit;
+  .d-flex {
+    justify-content: center;
+  }
+}
+span{
+    font-size: 12px;
+}
+div{
+    line-height: normal;
+}

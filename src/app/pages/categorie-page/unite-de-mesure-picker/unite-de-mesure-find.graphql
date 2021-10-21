@@ -1,0 +1,36 @@
+fragment UnitesDeMesureRecursiveParts on UnitesDeMesure {
+    children{
+        ...UnitesDeMesureFields
+        #        children{
+        #            ...UnitesDeMesureFields
+        #            children{
+        #                ...UnitesDeMesureFields
+        #                children{
+        #                    ...UnitesDeMesureFields
+        #                }
+        #            }
+        #        }
+    }
+}
+
+fragment UnitesDeMesureFields on UnitesDeMesure{
+    id
+    nom
+    symbole
+    slug
+    hasChildren
+    created_at
+    updated_at
+    description
+}
+
+
+query UnitesDeMesureFind(
+    $id:ID!){
+    uniteDeMesure(
+        id:$id
+    ){
+        ...UnitesDeMesureFields
+        ...UnitesDeMesureRecursiveParts
+    }
+}

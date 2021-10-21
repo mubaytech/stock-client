@@ -1,0 +1,69 @@
+:host ::ng-deep {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  tui-root {
+    ion-app {
+      ion-split-pane[contentId="main"] {
+        ion-menu {
+          --border: 1px solid var(--ion-color-light-shade);
+          border-inline-end: var(--border);
+
+          --app-box-shadow: none;
+
+          ion-header,
+          ion-footer {
+            box-shadow: none;
+            border: none;
+          }
+
+          & > ion-header {
+            app-setting-item ion-card,
+            app-setting-item ion-item.item-interactive,
+            ion-card,
+            ion-item.item-interactive {
+              border: none !important;
+            }
+
+            ion-toolbar app-setting-item {
+              max-width: 160px;
+            }
+          }
+
+          & > ion-content {
+            --background: var(--ion-background-color, #fff);
+
+            ion-list ion-list-header ion-label {
+              @apply uppercase;
+            }
+
+            ion-list ion-item {
+              --border-width: 0;
+              @apply mt-1   mx-2;
+              --color: rgba(var(--ion-color-dark-rgb), 0.7);
+
+              ion-label {
+                color: var(--color);
+              }
+            }
+          }
+
+          .logo {
+            height: 50px;
+            width: 100px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.taskbar-header {
+  box-shadow: none !important;
+  border: none !important;
+}
+
+

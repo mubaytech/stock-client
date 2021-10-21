@@ -1,0 +1,11 @@
+query Nationalites{
+    nationalites(first: 1000){
+        data{
+            id
+            nom
+            slug
+            created_at
+            updated_at
+        }
+    }
+}

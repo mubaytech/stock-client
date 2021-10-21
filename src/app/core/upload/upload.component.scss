@@ -1,0 +1,22 @@
+
+ion-progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 12222222222
+}
+
+:host {
+    height: 80px;
+    @apply rounded-md;
+}
+
+ion-item {
+    app-image {
+        height: 80px;
+        width: 80px;
+    }
+
+    --padding-start: 0px
+}
+

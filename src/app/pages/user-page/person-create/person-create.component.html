@@ -1,0 +1,89 @@
+<div [formGroup]="formGroup">
+    <ion-row>
+        <ion-col [sizeMd]="4" [size]="12">
+            <ion-item>
+                <ion-label position="floating">Prenom / Nom</ion-label>
+                <ion-input formControlName="nom" [autoUnmask]="false" [appMask]="inputMasks.nom"></ion-input>
+            </ion-item>
+            <app-form-errors [control]="controls.nom"></app-form-errors>
+        </ion-col>
+        <ion-col [sizeMd]="4" [size]="12">
+            <ion-item>
+                <ion-label position="floating">Sexe</ion-label>
+                <ion-select formControlName="sexe">
+                    <ion-select-option value="HOMME">Homme</ion-select-option>
+                    <ion-select-option value="FEMME">Femme</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <app-form-errors [control]="controls.sexe"></app-form-errors>
+        </ion-col>
+        <ion-col [sizeMd]="4" [size]="12">
+            <ion-item>
+                <ion-label position="floating">Date de n'aissance</ion-label>
+                <app-date-picker-input valueDisplayFormat="DD/MM/yy"
+                                       formControlName="date_de_naiss"></app-date-picker-input>
+            </ion-item>
+            <app-form-errors [control]="controls.date_de_naiss"></app-form-errors>
+        </ion-col>
+        <ion-col [sizeMd]="4" [size]="12">
+            <ion-item>
+                <ion-label position="floating">Nationalite</ion-label>
+                <app-nationalite-picker formControlName="nationalite"></app-nationalite-picker>
+            </ion-item>
+            <app-form-errors [control]="controls.nationalite"></app-form-errors>
+        </ion-col>
+        <ion-col [sizeMd]="4" [size]="12">
+
+            <ion-item>
+                <ion-label position="floating">Numero D'Identification(cni/passport)</ion-label>
+                <ion-input type="text" formControlName="cni" [appMask]="inputMasks.cni"
+                           [maskOptions]="{keepStatic: true}"></ion-input>
+            </ion-item>
+            <app-form-errors [control]="controls.cni"></app-form-errors>
+        </ion-col>
+        <ion-col [sizeMd]="4" [size]="12">
+            <ion-item>
+                <ion-label position="floating">Adresse Email</ion-label>
+                <ion-input formControlName="email" [appMask]="inputMasks.email"></ion-input>
+            </ion-item>
+            <app-form-errors [control]="controls.email"></app-form-errors>
+        </ion-col>
+        <ion-col [sizeMd]="4" [size]="12">
+            <ion-item>
+                <ion-label position="stacked">Adresses</ion-label>
+                <ion-textarea [autoGrow]="true" formControlName="adresse_1" placeholder="Adresse *" [appMask]="inputMasks.adresse"
+                           [autoUnmask]="false" [maskOptions]="inputMasks.adresseOptions"></ion-textarea>
+                <ion-textarea [autoGrow]="true" formControlName="adresse_2" placeholder="Adresse" [appMask]="inputMasks.adresse"
+                           [autoUnmask]="false" [maskOptions]="inputMasks.adresseOptions"></ion-textarea>
+            </ion-item>
+            <app-form-errors [control]="controls.adresse_1"></app-form-errors>
+            <app-form-errors [control]="controls.adresse_2"></app-form-errors>
+        </ion-col>
+        <ion-col [sizeMd]="4" [size]="12">
+            <ion-item>
+                <ion-label position="stacked">Telephones</ion-label>
+                <ion-input [appMask]="inputMasks.phone" formControlName="contact_1"
+                           placeholder="Telephone *"></ion-input>
+                <ion-input [appMask]="inputMasks.phone" formControlName="contact_2"
+                           placeholder="Telephone"></ion-input>
+            </ion-item>
+            <app-form-errors [control]="controls.contact_1"></app-form-errors>
+            <app-form-errors [control]="controls.contact_2"></app-form-errors>
+        </ion-col>
+        <ion-col [sizeMd]="6" [size]="12">
+            <ion-item class="item-interactive">
+                <ion-label position="stacked">Photo</ion-label>
+                <app-file-input [sizeLg]="12" [sizeXl]="12" formControlName="image" [multiple]="false"></app-file-input>
+            </ion-item>
+            <app-form-errors [control]="controls.image"></app-form-errors>
+        </ion-col>
+        <ion-col [sizeMd]="6" [size]="12">
+            <ion-item class="item-interactive">
+                <ion-label position="stacked">Photo Piece d'identite</ion-label>
+                <app-file-input [sizeLg]="12" [sizeXl]="12" formControlName="imagePiece"
+                                [multiple]="false"></app-file-input>
+            </ion-item>
+            <app-form-errors [control]="controls.imagePiece"></app-form-errors>
+        </ion-col>
+    </ion-row>
+</div>

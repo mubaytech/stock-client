@@ -1,0 +1,82 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Creer Un Depot</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <form [formGroup]="formGroup" class="ion-margin">
+        <div>
+            <ion-item>
+                <ion-label position="floating">Region</ion-label>
+                <ion-input type="text" formControlName="region"></ion-input>
+            </ion-item>
+            <app-form-errors [control]="formGroup.get('region')"></app-form-errors>
+        </div>
+        <div>
+            <ion-item>
+                <ion-label position="floating">Ville</ion-label>
+                <ion-input type="text" formControlName="ville"></ion-input>
+            </ion-item>
+            <app-form-errors [control]="formGroup.get('ville')"></app-form-errors>
+        </div>
+        <div>
+            <ion-item>
+                <ion-label position="floating">Nom</ion-label>
+                <ion-input type="text" formControlName="nom" appHasSlug></ion-input>
+            </ion-item>
+            <app-form-errors [control]="formGroup.get('nom')"></app-form-errors>
+        </div>
+        <div>
+            <ion-item>
+                <ion-label position="floating">Adresse</ion-label>
+                <ion-input type="text" formControlName="adresse_1"></ion-input>
+            </ion-item>
+            <app-form-errors [control]="formGroup.get('adresse_1')"></app-form-errors>
+        </div>
+        <div>
+            <ion-item>
+                <ion-label position="floating">Telephone 1</ion-label>
+                <ion-input type="text" formControlName="contact_1"></ion-input>
+            </ion-item>
+            <app-form-errors [control]="formGroup.get('contact_1')"></app-form-errors>
+        </div>
+        <div>
+            <ion-item>
+                <ion-label position="floating">Telephone 2</ion-label>
+                <ion-input type="text" formControlName="contact_2"></ion-input>
+            </ion-item>
+            <app-form-errors [control]="formGroup.get('contact_2')"></app-form-errors>
+        </div>
+        <div>
+            <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-input type="text" formControlName="email"></ion-input>
+            </ion-item>
+            <app-form-errors [control]="formGroup.get('email')"></app-form-errors>
+        </div>
+        <div>
+            <ion-item>
+                <ion-label position="floating">Site Web</ion-label>
+                <ion-input type="text" formControlName="web"></ion-input>
+            </ion-item>
+            <app-form-errors [control]="formGroup.get('web')"></app-form-errors>
+        </div>
+        <div>
+            <ion-item class="item-input">
+                <ion-label position="stacked">Image</ion-label>
+                <app-file-input formControlName="image" [multiple]="true"></app-file-input>
+            </ion-item>
+            <app-form-errors [control]="formGroup.get('image')"></app-form-errors>
+        </div>
+    </form>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-row class="ion-justify-content-end">
+            <ion-button size="large" fill="clear" (click)="submit()">
+                soumettre
+                <ion-icon name="send"></ion-icon>
+            </ion-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-footer>

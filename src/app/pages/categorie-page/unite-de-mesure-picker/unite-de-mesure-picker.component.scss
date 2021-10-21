@@ -1,0 +1,7 @@
+ion-content > div > ion-skeleton-text {
+    height: 30px;
+}
+
+.node-expender, .node-checkbox {
+    @apply p-1 rounded-full;
+}

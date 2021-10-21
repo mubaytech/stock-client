@@ -1,0 +1,81 @@
+:host {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  object-fit: unset;
+  display: block;
+}
+
+.image-container {
+  font-size: inherit;
+  background-color: inherit;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  //padding: 0 !important;
+  overflow: hidden;
+  object-fit: inherit;
+  overflow: inherit;
+
+  &.img-loaded {
+    img {
+      visibility: inherit;
+      position: static;
+    }
+
+    .iconContainer {
+      visibility: hidden ;
+    }
+  }
+
+  &.error {
+
+    .iconContainer {
+      visibility: inherit;
+    }
+
+  }
+
+  &.rounded {
+    border-radius: 50% !important;
+    //overflow: hidden;
+  }
+
+
+  img {
+    /* transition: visibility 0s linear, opacity .5s linear;
+     opacity: 0;*/
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    object-fit: inherit;
+    z-index: 1;
+  }
+
+
+
+
+  .iconContainer {
+    width: 100%;
+    //padding: 3px;
+    height: 100%;
+    //display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    //border-bottom: 1.5px solid var(--ion-color-light);
+  }
+
+  ion-icon[aria-label="person"] {
+    padding-top: 8.5% !important;
+  }
+}

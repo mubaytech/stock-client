@@ -1,0 +1,17 @@
+query SettingsAll ($where:QuerySettingsWhereWhereConditions){
+  settings(first: 100,where:$where ){
+    data{
+      id
+      nom
+      slug
+      type
+      value{
+        value
+        type
+      }
+      created_at
+      updated_at
+      description
+    }
+  }
+}

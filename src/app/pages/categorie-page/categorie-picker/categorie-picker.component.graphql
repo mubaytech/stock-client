@@ -1,0 +1,61 @@
+fragment CategorieRecursiveParts on Categorie {
+    description
+    #    children{
+    #        ...CategorieFields
+    #        children{
+    #            ...CategorieFields
+    #            children{
+    #                ...CategorieFields
+    #                children{
+    #                    ...CategorieFields
+    #                }
+    #            }
+    #        }
+    #    }
+}
+
+fragment CategorieFields on Categorie{
+    id
+    nom
+    slug
+    created_at
+    updated_at
+    description
+    hasChildren
+    image{
+        id
+        nom
+        thumbnail_url
+        url
+        created_at
+        exist
+        updated_at
+
+    }
+    unitesDeMesures{
+        id
+        nom
+        symbole
+        slug
+        created_at
+        updated_at
+        description
+    }
+}
+
+
+query Categories(
+    $where:QueryCategoriesWhereWhereConditions,
+    $root:Boolean
+){
+    categories(
+        first: 100,
+        where: $where,
+        root:$root
+    ){
+        data{
+            ...CategorieFields
+            ...CategorieRecursiveParts
+        }
+    }
+}

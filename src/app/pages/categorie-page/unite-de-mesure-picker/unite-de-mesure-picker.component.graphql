@@ -1,0 +1,43 @@
+#fragment UnitesDeMesuresRecursiveParts on UnitesDeMesure {
+#    children @client {
+#        ...UnitesDeMesureFields
+#        children @client {
+#            ...UnitesDeMesureFields
+#            children @client {
+#                ...UnitesDeMesureFields
+#                children @client {
+#                    ...UnitesDeMesureFields
+#                }
+#            }
+#        }
+#    }
+#}
+
+fragment UnitesDeMesureFields on UnitesDeMesure{
+    id
+    nom
+    symbole
+    slug
+    hasChildren
+    created_at
+    updated_at
+    description
+}
+
+
+query UnitesDeMesures(
+    $where:QueryUniteDeMesuresWhereWhereConditions
+    $root:Boolean
+
+){
+    uniteDeMesures(
+        where: $where,
+        root:$root
+    ){
+        ...UnitesDeMesureFields
+#        children @client {
+#            ...UnitesDeMesureFields
+#            ...UnitesDeMesuresRecursiveParts
+#        }
+    }
+}

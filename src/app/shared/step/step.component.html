@@ -1,0 +1,27 @@
+<div class="w-full t">
+  <div class="relative ">
+    <div
+      [ngClass]="iconStyle"
+      (click)="onClick.next(this)"
+      class="w-10 h-10 mx-auto transition-all duration-300  rounded-full cursor-pointer text-lg text-medium-base border-medium-base flex items-center">
+      <div class="text-center   inline-block  w-full">
+        <ng-content select="app-step-icon"></ng-content>
+      </div>
+    </div>
+    <div *ngIf="hasPercent" class="absolute flex align-center items-center align-middle content-center"
+         style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(50%, -50%);right: 0">
+      <div
+        class="w-full bg-light-base  rounded items-center align-middle align-center flex-1">
+        <div
+
+          class="w-0 bg-medium-base  py-1 rounded transition-all duration-300"
+          [style.width]="percent+'% !important'"></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="text-xs font-extralight text-center  md:text-base mx-2 cursor-pointer transition-all duration-300"
+       [ngClass]="textStyle" (click)="onClick.next(this)">
+    <ng-content select="app-step-text"></ng-content>
+  </div>
+</div>

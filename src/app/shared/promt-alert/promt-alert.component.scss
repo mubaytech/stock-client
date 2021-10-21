@@ -1,0 +1,12 @@
+ion-footer:before, ion-header:after {
+  background-image: none !important;
+  background: var(ionc);
+}
+ion-header,ion-footer{
+  box-shadow: none !important;
+  border: none !important;
+}
+
+ion-content {
+  --background: var(--ion-background-color, #fff);
+}

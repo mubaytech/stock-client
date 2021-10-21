@@ -1,0 +1,17 @@
+mutation CreateFileModel {
+    createFileModel(
+        input: {
+            exist: false
+        }
+    ){
+        id
+        nom
+        path
+        url
+        exist
+        thumbnail_path
+        thumbnail_url
+        created_at
+        updated_at
+    }
+}

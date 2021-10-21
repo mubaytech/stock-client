@@ -1,0 +1,14 @@
+:host ::ng-deep {
+
+  .custom-ion-input-value {
+    /*border: 3px dotted rgba(var(--ion-color-dark-rgb), 0.07);
+    padding: 2px;
+    border-radius: 4px;*/
+
+  }
+}
+
+:host {
+  width: 100%;
+  display: block;
+}

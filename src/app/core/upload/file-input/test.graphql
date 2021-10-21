@@ -1,0 +1,15 @@
+query test{
+    files(first: 30){
+        data{
+            id
+            created_at
+        }
+        paginatorInfo{
+            count
+            currentPage
+            firstItem
+            lastPage
+            total
+        }
+    }
+}

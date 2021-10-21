@@ -1,0 +1,10 @@
+
+<ion-header *ngIf="headerTemplate">
+  <ng-container [ngTemplateOutlet]="headerTemplate"></ng-container>
+</ion-header>
+<ion-content *ngIf="bodyTemplate">
+  <ng-container [ngTemplateOutlet]="bodyTemplate"></ng-container>
+</ion-content>
+<ion-footer *ngIf="footerTemplate">
+  <ng-container [ngTemplateOutlet]="footerTemplate"></ng-container>
+</ion-footer>

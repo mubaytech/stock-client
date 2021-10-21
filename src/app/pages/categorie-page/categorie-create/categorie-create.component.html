@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Creer une categorie</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content >
+    <form [formGroup]="formGroup">
+        <div class="grid grid-flow-row  md:grid-cols-3 gap-1 p-2  md:auto-rows-max ">
+            <div class="col-span-3">
+                <ion-item>
+                    <ion-label position="floating">Categorie parent</ion-label>
+                    <app-categorie-input formControlName="parent_id"></app-categorie-input>
+                </ion-item>
+                <app-form-errors [control]="controls.parent_id"></app-form-errors>
+            </div>
+            <div  class="col-span-2">
+                <ion-item>
+                    <ion-label position="floating">Unite de mesure</ion-label>
+                    <app-unite-de-mesure-input formControlName="uniteDeMesure"></app-unite-de-mesure-input>
+                </ion-item>
+                <app-form-errors [control]="controls.uniteDeMesure"></app-form-errors>
+            </div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </form>
+</ion-content>

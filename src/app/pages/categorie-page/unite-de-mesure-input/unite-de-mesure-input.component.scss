@@ -1,0 +1,9 @@
+:host{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+app-custom-ion-input.has-value {
+    min-height: 40px;
+    height: auto;
+}

@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="../../../../../../../einfo/resources/clients/parking_2/src/global.scss">
+<ion-item lines="none" class="rounded-md">
+
+  <ng-container *ngVar="upload.onModel|async as f">
+    <app-image class="m-0" [rounded]="false" [host]="''" [src]="f.thumbnail_url" slot="start"
+               *ngIf="upload.isImage(f.type)"></app-image>
+    <ion-label class="ml-6">
+      <h3>{{f.nom}}</h3>
+      <p>{{f.type}}</p>
+    </ion-label>
+  </ng-container>
+  <ion-buttons slot="end" class="m-0">
+    <!--<ion-button>
+        <ion-icon name="pause-outline"></ion-icon>
+    </ion-button>-->
+    <ion-button
+      *ngIf="!(upload.done$.asObservable()|async)&&!(upload.uploading$.asObservable()|async)"
+      (click)="upload.fire(true)"
+    >
+      <ion-icon
+        [name]="'arrow-up-circle-outline'"></ion-icon>
+    </ion-button>
+    <ion-button
+      *ngIf="(upload.done$.asObservable()|async)"
+      color="success"
+      disabled="true"
+    >
+      <ion-icon
+        name="checkmark-outline"></ion-icon>
+    </ion-button>
+    <ion-button
+      *ngIf="(upload.uploading$.asObservable()|async)"
+      (click)="upload.fire(false)"
+    >
+      <ion-icon
+        [name]="'close-circle-outline'">
+      </ion-icon>
+    </ion-button>
+    <ion-button (click)="uploadService.cancel(upload)" color="danger" appPromtOnClick>
+      <ion-icon
+        [name]="'remove-outline'"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-progress-bar
+    [color]="(upload.done$.asObservable()|async)?'success':((upload.error$.asObservable()|async)?'danger':'warning')"
+    [type]="((upload.done$.asObservable()|async)||(upload.error$.asObservable()|async))?'determinate':'indeterminate'"
+    [value]="100"
+    reversed="true"
+  ></ion-progress-bar>
+</ion-item>
+
+

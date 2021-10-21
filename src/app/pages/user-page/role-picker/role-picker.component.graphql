@@ -1,0 +1,13 @@
+query Roles{
+    roles(first: 10){
+        data{
+            active
+            created_at
+            description
+            id
+            nom
+            slug
+            updated_at
+        }
+    }
+}

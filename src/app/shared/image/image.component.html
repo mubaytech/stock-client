@@ -1,0 +1,18 @@
+<div class="image-container"
+     [class.rounded]="rounded"
+     [class.tui-skeleton]="showLoaderAnimation && (!(done|async) && !(hasError|async))"
+      [class.img-loaded]="$loaded|async"
+      [class.error]="hasError|async"
+>
+  <div class="iconContainer" [ngStyle]="iconContainer">
+    <ng-content></ng-content>
+  </div>
+  <img
+    #img
+    loading="lazy"
+    decoding="async"
+    referrerpolicy="no-referrer"
+    [alt]="alt"
+    [title]="alt"
+    (error)="_error()" (load)="_loaded()" [ngStyle]="_imageStyle" />
+</div>

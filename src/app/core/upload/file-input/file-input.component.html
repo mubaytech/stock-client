@@ -1,0 +1,38 @@
+<app-custom-ion-input   [clearInput]="clearInput" [(ngModel)]="val" [style.height]="(uploads|async).length?'auto':'50px'" [hasButton]="false" [hasIcon]="false" >
+  <app-custom-ion-input-value class="pb-1">
+    <div style="height: auto">
+      <div class="flex items-center">
+        <div>
+          <ion-text>Deposer ici un fichier ,</ion-text>
+        </div>
+        <div>
+          <ion-button  style="height: 25px" (click)="fileInput.click()" type="file" fill="clear" size="clear">
+            Parcourir
+          </ion-button>
+        </div>
+        <div>
+          <ion-text>ou </ion-text>
+        </div>
+        <div>
+          <ion-button  style="height: 25px" (click)="capture()" type="file" fill="clear" size="clear">
+            <app-ionicon-camera-outline></app-ionicon-camera-outline>
+          </ion-button>
+        </div>
+        <form
+          [formGroup]="fileInputForm"
+          style="display: none">
+          <input #fileInput (change)="onInputChange($event)" type="file" formControlName="fileInput"
+                 [multiple]="multiple"/>
+        </form>
+      </div>
+    </div>
+    <div class="">
+      <ion-row>
+        <ion-col [sizeMd]="sizeMd" [sizeLg]="sizeLg" [sizeXl]="sizeXl" *ngFor="let u of (uploads|async) ; trackBy:core.trackByIdFn">
+          <app-upload class="shadow-sm" [upload]="u"></app-upload>
+        </ion-col>
+      </ion-row>
+    </div>
+  </app-custom-ion-input-value>
+</app-custom-ion-input>
+

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/home/autres"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>paramètres</ion-title>
+   <app-current-user slot="end"></app-current-user>
+  </ion-toolbar>
+  <ion-progress-bar type="indeterminate" *ngIf="(settingsService.loading|async)||(settingsService.loadingForUser|async)"></ion-progress-bar>
+</ion-header>
+<ion-content class="main-content">
+  <ion-row class="ion-justify-content-center">
+    <ion-col sizeSm="7" class="ion-no-margin ion-no-padding">
+      <app-setting-item
+        *ngFor="let setting of settingsService.userSettings|async;trackBy:coreService.trackByIdFn"
+        [placeholder]="false"
+        [setting]="setting"
+      ></app-setting-item>
+    </ion-col>
+  </ion-row>
+  <!-- <ion-list *ngIf="authGuard.userHasRole('manager')|async">
+       <ion-list-header>
+           Global
+       </ion-list-header>
+   </ion-list>-->
+</ion-content>

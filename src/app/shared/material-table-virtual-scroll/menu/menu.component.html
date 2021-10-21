@@ -1,0 +1,10 @@
+<mat-menu #menu="matMenu">
+    <button class="d-flex ion-align-items-center" style="display: flex !important;" mat-menu-item (click)="clear.next()">
+        <ion-icon size="large" name="trash-outline"  style="margin-top: -3px" class="ion-float-left"></ion-icon>
+        <span>effacer les filtres</span>
+    </button>
+</mat-menu>
+
+<button class="clear" mat-icon-button [matMenuTriggerFor]="menu">
+    <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+</button>

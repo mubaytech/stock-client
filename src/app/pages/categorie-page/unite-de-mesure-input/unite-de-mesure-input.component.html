@@ -1,0 +1,14 @@
+<app-custom-ion-input [class.has-value]="ionInputComponent.hasValue()" #ionInputComponent
+                      [(ngModel)]="val"
+                      (onOpen)="open()"
+
+>
+    <div class="whitespace-normal">
+        <ion-chip *ngFor="let v of value" class="m-1">
+            <div class="ion-text-nowrap flex">
+                <p class="text-base  ion-text-capitalize font-medium">{{v.nom}}</p>
+                <p class="text-sm font-light  pl-0.5">{{v.symbole}}</p>
+            </div>
+        </ion-chip>
+    </div>
+</app-custom-ion-input>

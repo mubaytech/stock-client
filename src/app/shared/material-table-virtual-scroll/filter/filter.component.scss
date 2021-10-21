@@ -1,0 +1,40 @@
+:host {
+    display: flex;
+    align-items: center;
+}
+
+.trigger {
+    color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: flex;
+    margin-left: 4px;
+    opacity: 0;
+    transform: translateY(-5px);
+
+    transition-duration: 0.2s;
+    transition-property: opacity, transform;
+
+    :host.has-value & {
+        color: rgba(0, 0, 0, 0.54);
+    }
+
+    :host:hover &,
+    :host.show-trigger & {
+        opacity: 1;
+        transform: translateY(-1px);
+    }
+}
+
+.container {
+
+
+    mat-form-field {
+        margin: 0 0;
+        width: 100%;
+    }
+}
+
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+     border-radius: unset !important;
+    padding: 0.1em .01em 0.1em 0.1em !important;
+}

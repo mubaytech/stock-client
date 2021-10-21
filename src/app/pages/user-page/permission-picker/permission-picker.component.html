@@ -1,0 +1,7 @@
+<ionic-selectable [items]="items" [(ngModel)]="val" (ngModelChange)="onChange(val)" >
+    <template ionicSelectableItemTemplate let-item="item">
+        <ion-label>
+            <h2>{{item.nom}}</h2>
+        </ion-label>
+    </template>
+</ionic-selectable>

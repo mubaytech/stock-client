@@ -1,0 +1,19 @@
+<ion-card class="app-card ion-no-padding  ion-no-margin">
+  <ion-item lines="none" [formGroup]="model" [ngSwitch]="setting?.value?.type">
+    <ion-label *ngIf="!placeholder" [position]="setting.value.type === 'boolean' ? null : 'floating' ">
+      <h2 class="ion-text-capitalize">{{setting.nom + ' '}}</h2>
+      <p class="ion-text-capitalize">{{setting.description}}</p>
+    </ion-label>
+
+    <ng-container *ngSwitchCase="'boolean'">
+      <ion-label *ngIf="placeholder">{{setting.nom}}</ion-label>
+      <ion-toggle #item [checked]="setting.value.value"
+                  (ionChange)="model.get('value').setValue(item.checked)"></ion-toggle>
+    </ng-container>
+    <ng-container *ngSwitchCase="'Prevision'">
+      <app-prevision-picker   [placeholder]="placeholder?setting.nom:undefined" #previsionPickerComponent
+                            formControlName="value"
+      ></app-prevision-picker>
+    </ng-container>
+  </ion-item>
+</ion-card>

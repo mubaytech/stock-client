@@ -1,0 +1,30 @@
+<ng-content></ng-content>
+<mat-menu #filterMenu="matMenu">
+    <div
+            class="container ion-no-padding ion-no-margin" style="min-width: 170px"
+            (click)="$event.stopPropagation()"
+            (keyup)="$event.stopPropagation()"
+            (keydown)="$event.stopPropagation()"
+    >
+        <button mat-menu-item >
+            <mat-select [formControl]="operation" *ngIf="!betweens">
+                <mat-option *ngFor="let op of operations" [value]="op">
+                    {{ op.text }}
+                </mat-option>
+            </mat-select>
+            <mat-select  [formControl]="operation" *ngIf="betweens">
+                <mat-option  [value]="nullable"></mat-option>
+                <mat-option *ngFor="let op of operations" [value]="op">
+                    {{ op.text }}
+                </mat-option>
+            </mat-select>
+        </button>
+        <mat-form-field class="ion-margin-top" *ngIf="!betweens && needsFilter" appearance="fill" >
+            <input placeholder="recherche" matInput [formControl]="filter">
+        </mat-form-field>
+    </div>
+</mat-menu>
+
+<span class="trigger" [matMenuTriggerFor]="filterMenu">
+  <ion-icon name="filter-outline"></ion-icon>
+</span>

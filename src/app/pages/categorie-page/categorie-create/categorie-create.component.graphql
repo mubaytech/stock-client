@@ -1,0 +1,40 @@
+mutation CreateCategorie(
+    $nom:String!
+    $description:String
+    $uniteDeMesure:CreateUnitesDeMesureBelongsToMany!
+    $children:CreateCategorieBelongsToMany!
+    $image:CreateFileModelBelongsTo!
+    $parent_id:ID!
+){
+    createCategorie(input: {
+        nom: $nom,
+        description: $description,
+        uniteDeMesure: $uniteDeMesure,
+        image: $image,
+        parent_id: $parent_id,
+        children: $children
+
+    }){
+        id
+        nom
+        slug
+        unitesDeMesures{
+            id
+            nom
+            slug
+            description
+        }
+        image{
+            id
+            url
+            thumbnail_url
+            exist
+        }
+        ancestors{
+            id
+            nom
+            slug
+        }
+
+    }
+}

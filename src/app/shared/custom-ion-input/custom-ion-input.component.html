@@ -1,0 +1,41 @@
+<div class="custom-ion-input-inner">
+  <div class="custom-ion-input-value">
+    <!--        <div *ngIf="headerTemplate"-->
+    <!--             class="custom-ion-input-value-item">-->
+    <!--            <div [ngTemplateOutlet]="headerTemplate">-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <div class="custom-ion-input-value-item"
+    >
+      <ng-content select="app-custom-ion-input-value"></ng-content>
+    </div>
+    <div *ngIf="_hasPlaceholder && placeholderTemplate"
+         class="custom-ion-input-value-item">
+      <ng-content select="app-custom-ion-input-placeholder"></ng-content>
+    </div>
+    <div class="custom-ion-input-value-item"
+         *ngIf="_hasPlaceholder && !placeholderTemplate">
+      {{placeholder}}
+    </div>
+    <!-- Fix icon allignment when there's no value or placeholder. -->
+    <span *ngIf="!value && !_hasPlaceholder">&nbsp;</span>
+  </div>
+  <div *ngIf="clearInput" class="custom-ion-input-icon float-right z-10">
+    <ion-button
+      *ngIf="value"
+      color="dark" slot="end" fill="clear" class="ml-1"
+      style="margin: 0 !important;
+    width: 25px;"
+      (click)="value=null">
+      <app-ionicon-close-circle class="text-lg"></app-ionicon-close-circle>
+    </ion-button>
+  </div>
+  <div class="custom-ion-input-icon float-right" *ngIf="hasIcon">
+    <div class="custom-ion-input-icon-inner" *ngIf="!iconTemplate"></div>
+    <ng-content select="app-custom-ion-input-icon"></ng-content>
+  </div>
+  <!-- Need to be type="button" otherwise click event triggers form ngSubmit. -->
+  <button class="custom-ion-input-cover" [disabled]="!isEnabled"
+          (click)="_click($event)" type="button" *ngIf="hasButton">
+  </button>
+</div>

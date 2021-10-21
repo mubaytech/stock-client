@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>{{pickerInputComponent.display(pickerInputComponent.value, pickerInputComponent.displayFormat)}}</ion-title>
+        <ion-buttons slot="end">
+            <ion-button fill="solid" (click)="pickerInputComponent._modal.dismiss()">Ok</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content cdkTrapFocus>
+    <div class="h-full w-full">
+        <mat-calendar
+            class="h-full w-full"
+
+
+            [ngClass]="pickerInputComponent.panelClass"
+            [startView]="pickerInputComponent.startView"
+
+            [dateClass]="pickerInputComponent.dateClass"
+            [comparisonStart]="pickerInputComponent.comparisonStart"
+            [comparisonEnd]="pickerInputComponent.comparisonEnd"
+            (yearSelected)="pickerInputComponent._selectYear($event)"
+            (monthSelected)="pickerInputComponent._selectMonth($event)"
+            (viewChanged)="pickerInputComponent._viewChanged($event)"
+
+            [selected]="pickerInputComponent.value"
+            [startAt]="pickerInputComponent.value"
+            [minDate]="pickerInputComponent._minDate"
+            [maxDate]="pickerInputComponent._maxDate"
+            [dateFilter]="pickerInputComponent.myDateFilter"
+            (selectedChange)="pickerInputComponent.onSelect($event);pickerInputComponent._modal.dismiss()">
+        </mat-calendar>
+    </div>
+</ion-content>
+

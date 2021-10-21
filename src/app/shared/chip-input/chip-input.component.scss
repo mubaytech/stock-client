@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  width: 100%;
+
+  ::ng-deep {
+    app-custom-ion-input .custom-ion-input-cover {
+      height: 0;
+      display: none;
+    }
+
+    .custom-ion-input-inner > .custom-ion-input-value {
+      display: flex;
+    }
+
+
+    .custom-ion-input-value-item {
+      margin: 0 !important;
+    }
+    .custom-ion-input-icon {
+      display: flex;
+      align-items: center;
+      top: auto;
+    }
+
+    ion-input {
+      max-width: 100px;
+    }
+
+  }
+
+
+}
+

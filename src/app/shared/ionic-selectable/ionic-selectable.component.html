@@ -1,0 +1,52 @@
+<div class="ionic-selectable-inner">
+  <div class="ionic-selectable-value">
+    <div *ngIf="valueTemplate && _valueItems.length && isMultiple">
+      <ng-template
+        *ngTemplateOutlet="valueTemplate;context{ value: _valueItems }"
+      >
+      </ng-template>
+    </div>
+
+    <div class="ionic-selectable-value-item"
+         *ngIf="valueTemplate && _valueItems.length && !isMultiple">
+      <ng-template *ngTemplateOutlet="valueTemplate;context:{value: _valueItems[0]}"
+      >
+      </ng-template>
+    </div>
+    <span *ngIf="!valueTemplate && _valueItems.length">
+            <div class="ionic-selectable-value-item"
+                 *ngFor="let valueItem of _valueItems">
+        {{_formatValueItem(valueItem)}}
+      </div>
+        </span>
+    <div *ngIf="_hasPlaceholder && placeholderTemplate"
+         class="ionic-selectable-value-item">
+      <div [ngTemplateOutlet]="placeholderTemplate">
+      </div>
+    </div>
+    <div class="ionic-selectable-value-item"
+         *ngIf="_hasPlaceholder && !placeholderTemplate">
+      {{placeholder}}
+    </div>
+    <!-- Fix icon allignment when there's no value or placeholder. -->
+    <span *ngIf="!_valueItems.length && !_hasPlaceholder">&nbsp;</span>
+  </div>
+  <div *ngIf="clearInput" class=" z-10 flex  h-full " [class.ion-align-self-center]="!_hasIonLabel">
+    <ion-button
+      *ngIf="!isReadonly&&isEnabled&&(isMultiple?value?.length:value)"
+      color="dark" slot="end" fill="clear" class="ml-1 text-xl  h-auto w-auto ion-no-padding ion-no-margin "
+      (click)="clear();_emitValueChange()">
+      <app-ionicon-close-circle></app-ionicon-close-circle>
+    </ion-button>
+  </div>
+  <div *ngIf="iconTemplate" class="ionic-selectable-icon-template">
+    <div [ngTemplateOutlet]="iconTemplate"></div>
+  </div>
+  <div *ngIf="!iconTemplate" class="ionic-selectable-icon">
+    <div class="ionic-selectable-icon-inner"></div>
+  </div>
+  <!-- Need to be type="button" otherwise click event triggers form ngSubmit. -->
+  <button class="ionic-selectable-cover" [disabled]="!isEnabled"
+          (click)="_click($event)" type="button">
+  </button>
+</div>

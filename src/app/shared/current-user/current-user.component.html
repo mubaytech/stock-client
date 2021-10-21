@@ -1,0 +1,25 @@
+<ng-container *ngVar="(user | async) as currentUser">
+
+  <ion-card
+
+    class="ion-no-padding ion-no-margin app-card h-full w-full"
+    [button]="true"
+    style="color: inherit;min-width: 118px;--min-height: 43px !important;height: auto"
+    *ngIf="currentUser"
+    (click)="openUserOptions($event)"
+  >
+   <div class="h-full w-full flex  items-center">
+     <app-image
+       class="flex"
+       style="height: 35px;width: 35px"
+       [src]="currentUser.id"
+       [rounded]="true">
+       <app-ionicon-person-outline class="text-lg font-medium"></app-ionicon-person-outline>
+     </app-image>
+     <ion-label class="flex ">
+       <h2 class="ion-text-capitalize font-medium pr-2">{{currentUser.username}}</h2>
+     </ion-label>
+   </div>
+  </ion-card>
+
+</ng-container>

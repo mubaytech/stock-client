@@ -1,0 +1,6 @@
+<ng-content></ng-content>
+<div
+
+  class="infinite-scroll-container flex justify-center items-center overflow-hidden">
+  <ion-spinner [paused]="(onLoadingDelayed|async) && !(onDisabled|async)"   style="height: 30px;"></ion-spinner>
+</div>

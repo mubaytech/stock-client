@@ -1,0 +1,13 @@
+mutation UploadFile($id:ID!,$file:Upload!) {
+    uploadFile(id: $id,file: $file){
+        id
+        nom
+        path
+        url
+        exist
+        thumbnail_path
+        thumbnail_url
+        created_at
+        updated_at
+    }
+}

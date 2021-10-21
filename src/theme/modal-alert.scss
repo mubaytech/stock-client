@@ -1,0 +1,21 @@
+.modal-error .modal-wrapper {
+    background: transparent;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    margin: 15px;
+
+    ion-content {
+        --background: transparent;
+
+        ion-col {
+            padding: 0 !important;
+
+            > ion-card {
+                box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+                // margin: 0 !important;
+            }
+
+        }
+
+    }
+}
